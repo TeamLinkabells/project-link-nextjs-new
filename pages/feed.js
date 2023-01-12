@@ -27,9 +27,7 @@ let Feed = ({ links }) => {
         setInputUrlModal={setInputUrlModal}
         urlModalOpenFunc={urlModalOpenFunc}
       >
-        <section className="text-gray-600 m-auto px-20 py-5">
-          <div className="container">
-            <div className="flex flex-wrap gap-5" />
+        <section className="text-gray-600 mx-auto px-20 py-5 flex gap-5 flex-wrap align-top justify-start">
             <FeedView
               urlInputModal={urlInputModal}
               setInputUrlModal={setInputUrlModal}
@@ -40,7 +38,6 @@ let Feed = ({ links }) => {
               setUrlShowModal={setUrlShowModal}
               links={links}
             />
-          </div>
         </section>
       </FeedLayout>
       {/* ---------------------원래 피드----------------------- */}

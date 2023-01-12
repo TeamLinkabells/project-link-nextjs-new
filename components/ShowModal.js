@@ -101,11 +101,11 @@ function ShowModal(props) {
                         className="w-full object-cover"
                       ></img>
                     </div>
-                    <div className="mt-5 sm:flex h-[60px] bg-[#f1f1f5] rounded-md flex items-center px-4 text-[#666]">
-                      <h3>{linkInfo.title}</h3>
+                    <div className="mt-5 sm:flex h-[60px] bg-[#f1f1f5] rounded-md flex items-center p-4 text-[#666]">
+                      <h3 className="w-full break-all">{linkInfo.title}</h3>
                     </div>
                     <div className="mt-5 sm:flex h-[120px] bg-[#f1f1f5] rounded-md flex items-start p-4 text-[#666]">
-                      <p>{linkInfo.description}</p>
+                      <p className="w-full break-all">{linkInfo.description}</p>
                     </div>
                     <div className="flex justify-end gap-5 mt-5">
                       <ModalSubmitBtn

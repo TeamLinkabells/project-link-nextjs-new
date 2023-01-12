@@ -2,6 +2,10 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import axios from "axios";
 
+import Delete from "../../public/delete.svg"
+
+// import tw from "tailwind-styled-components"
+
 //하나씩 또 저장해줘야 함
 
 let FeedItem = (props) => {
@@ -40,10 +44,15 @@ let FeedItem = (props) => {
   return (
     <>
       <div>
-        <img src={img}></img>
-        <h3>제목 : {title}</h3>
-        <p>설명 : {description}</p>
-        <p>링크 : {url} </p>
+        <div className="h-[200px] overflow-hidden flex items-center justify-center border-b border-[#ddd]">
+          <img src={img} className="w-full"></img>
+        </div>
+        <div className="p-5">
+          <h3 className="text-xl text-black font-medium line-clamp-1 break-all">{title}</h3>
+          <p className="mt-2 break-words line-clamp-2 text-[#999] break-all">{description}</p>
+          <p className="mt-2 text-[#999] line-clamp-1 break-all">{url} </p>
+          <button><Delete className="mt-4 hover:fill-[#59A5FF]" /></button>
+        </div>
       </div>
     </>
   );

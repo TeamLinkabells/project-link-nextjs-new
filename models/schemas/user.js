@@ -1,6 +1,8 @@
 import { Schema, model, models } from "mongoose";
+import shortid from "shortid";
 
 const userSchama = new Schema({
+  // shortid: shortid.generate(),
   email: {
     type: String,
     required: true,

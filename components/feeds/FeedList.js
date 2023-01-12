@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import FeedItem from "./FeedItem";
 
-import tw from "tailwind-styled-components"
+import tw from "tailwind-styled-components";
 
 // css 추가
 const ListContainer = tw.div`
@@ -18,7 +18,7 @@ const ListContainer = tw.div`
   overflow-hidden
   hover:bg-[#F2F7FF]
   inline-block
-`
+`;
 
 let FeedList = (props) => {
   let { links } = props;

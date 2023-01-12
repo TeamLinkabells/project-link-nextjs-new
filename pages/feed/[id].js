@@ -1,14 +1,14 @@
+import { useRouter } from "next/router";
 import axios from "axios";
 import React, { useState } from "react";
-import Link from "next/link";
 
-import FeedList from "../components/feeds/FeedView";
-import FeedLayout from "../components/FeedLayout";
+import FeedLayout from "../../components/FeedLayout";
+import FeedView from "../../components/feeds/FeedView";
 
-import tw from "tailwind-styled-components";
-import FeedView from "../components/feeds/FeedView";
+export default function About({ data }) {
+  const router = useRouter();
+  const id = router.query.id;
 
-let Feed = ({ links }) => {
   const [urlData, setUrlData] = useState(""); //url 입력 데이터
 
   const [urlInputModal, setInputUrlModal] = useState(false); //모달인풋데이터
@@ -18,8 +18,7 @@ let Feed = ({ links }) => {
     setInputUrlModal(!urlInputModal);
   };
 
-  // console.log("getInitialProps : ", links.urlPost);
-
+  console.log("데이터", data);
   return (
     <>
       <FeedLayout
@@ -27,7 +26,9 @@ let Feed = ({ links }) => {
         setInputUrlModal={setInputUrlModal}
         urlModalOpenFunc={urlModalOpenFunc}
       >
-        <section className="text-gray-600 mx-auto px-20 py-5 flex gap-5 flex-wrap align-top justify-start">
+        <section className="text-gray-600 m-auto px-20 py-5">
+          <div className="container">
+            <div className="flex flex-wrap gap-5" />
             <FeedView
               urlInputModal={urlInputModal}
               setInputUrlModal={setInputUrlModal}
@@ -36,29 +37,23 @@ let Feed = ({ links }) => {
               setUrlData={setUrlData}
               urlShowModal={urlShowModal}
               setUrlShowModal={setUrlShowModal}
-              links={links}
+              links={data}
             />
+          </div>
         </section>
       </FeedLayout>
       {/* ---------------------원래 피드----------------------- */}
     </>
   );
-};
-
-export default Feed;
+}
 
 export async function getServerSideProps(context) {
-  console.log("context", context);
-  // const res = await axios.get("http://localhost:3000/api/links/feed");
+  const { params } = context;
+  const id = params.id;
+  console.log("context.params", id);
+  const res = await axios.get(`http://localhost:3000/api/feed/${id}`);
 
-  // const data = res.data;
+  const data = await res.data;
 
-  // return {
-  //   links: data,
-  // };
-  return {
-    props: {
-      message: "데이터입니다.",
-    },
-  };
+  return { props: { data } };
 }

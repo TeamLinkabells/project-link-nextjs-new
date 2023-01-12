@@ -100,7 +100,7 @@ export default function login() {
                       console.log("리스폰스", res.data);
                       if (res.data.status) {
                         setCookie("token", res.data, { path: "/" });
-                        router.push("/feed");
+                        router.push(`/feed/${res.data.id}`);
                       } else {
                         //에러 메시지를 보여주고
                         setErrorMsg(res.data.message);

@@ -2,6 +2,10 @@ import { useState } from "react";
 import SideNavBar from "./feeds/SideNavBar";
 
 
+
+
+
+
 let FeedLayout = ({
   children,
   urlInputModal,
@@ -16,7 +20,9 @@ let FeedLayout = ({
           setInputUrlModal={setInputUrlModal}
           urlModalOpenFunc={urlModalOpenFunc}
         />
+        <div className="w-[100%]">
         {children}
+        </div>
       </div>
     </>
   );

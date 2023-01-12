@@ -67,12 +67,6 @@ export default function login() {
             </Logodiv>
             <form>
               <InputDiv>
-                <label
-                  htmlFor="email"
-                  className="leading-7 text-sm text-gray-600"
-                >
-                  이메일
-                </label>
                 <InputBox
                   type="email"
                   id="email"
@@ -84,12 +78,6 @@ export default function login() {
                 ></InputBox>
               </InputDiv>
               <InputDiv>
-                <label
-                  htmlFor="password"
-                  className="leading-7 text-sm text-gray-600"
-                >
-                  비밀번호
-                </label>
                 <InputBox
                   type="password"
                   id="password"
@@ -105,7 +93,7 @@ export default function login() {
               </div>
               <button
                 type="button"
-                className="text-white bg-[#0074FF] border-0 py-2 px-8 rounded text-lg h-[60px] w-full mt-8"
+                className="text-white bg-[#0074FF] border-0 py-2 px-8 rounded text-lg h-[60px] w-full mt-5"
                 onClick={() => {
                   clickLoginBtn()
                     .then((res) => {

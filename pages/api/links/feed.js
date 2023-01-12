@@ -2,7 +2,7 @@ import connectMongo from "../../../utils/connectMongo";
 import Post from "../../../models/schemas/post";
 import User from "../../../models/schemas/user";
 
-//url 생성
+//url게시글 생성
 export default async function handler(req, res) {
   if (req.method === "POST") {
     const { title, description, image, url, email } = req.body;
@@ -34,20 +34,5 @@ export default async function handler(req, res) {
       message: "url 포스트를 생성하였습니다.",
     });
   }
-
-  if (req.method === "GET") {
-    const query = req.query;
-    console.log("쿼리", query);
-    console.log("CONNECTING TO MONGO");
-
-    await connectMongo();
-
-    console.log("CONNECTED TO MONGO");
-
-    let urlPost = await Post.find({})
-      .sort({ created: -1 }) //최신순 정렬
-      .populate("author");
-
-    res.json({ urlPost });
-  }
 }
+

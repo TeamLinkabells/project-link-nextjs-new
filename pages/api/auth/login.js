@@ -37,7 +37,7 @@ export default async function (req, res) {
 
     //정상적으로 로그인을 했을 시
     const secret = process.env.SECRET;
-    
+
     jwt.sign(
       {
         email: checkEmail.email, // 이메일과 이름을 jwt로 변경해주기 위해 작성
@@ -58,6 +58,7 @@ export default async function (req, res) {
             accessToken: token, //토큰 값을 브라우저에게 넘겨주는 부분
             email: checkEmail.email,
             name: checkEmail.name,
+            id: checkEmail._id,
           });
         }
       }

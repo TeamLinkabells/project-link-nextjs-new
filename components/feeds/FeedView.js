@@ -18,8 +18,6 @@ let FeedView = (props) => {
 
   const [inputData, setInputData] = useState("");
 
-  // console.log("리스트 정보: ", links);
-
   let handleSubmitBtn = () => {
     setInputData;
   };

@@ -37,7 +37,7 @@ function InputModal(props) {
   return (
     <>
       <div
-        className="relative z-10"
+        className="relative z-40"
         aria-labelledby="modal-title"
         role="dialog"
         aria-modal="true"

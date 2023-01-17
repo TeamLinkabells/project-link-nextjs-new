@@ -4,13 +4,14 @@ import { useCookies } from "react-cookie";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import InputModal from "../InputModal";
+import { useMediaQuery } from 'react-responsive'
 
 import SidebarBtn from "../../public/sidebar_button.svg";
 import ColorLogo from "../../public/logo_color.svg";
 import Setting from "../../public/setting.svg";
 import Logout from "../../public/logout.svg";
 import tw from "tailwind-styled-components";
-import CommonModal from "../CommonModal";
+// import CommonModal from "./CommonModal";
 
 const SidebarMenu = tw.div`
 h-10 flex items-center text-[#666666] hover:bg-[#E1EEFF]
@@ -55,12 +56,12 @@ function SideNavBar(props) {
 
   return (
     <>
-      <div className={toggleMenu ? "h-screen w-[240px]" : "h-screen"}>
+      <div className={toggleMenu ? "h-screen w-0 md:w-[240px]" : "h-screen w-[240px] md:w-0"}>
         <div
           className={
             toggleMenu
-              ? "w-[240px] h-full bg-[#FAFAFA] fixed top-0 left-0 border-r border-[#EDEDED] duration-100 flex flex-col justify-between"
-              : "w-[240px] h-full bg-[#FAFAFA] fixed top-0 -left-[240px] border-r border-[#EDEDED] duration-100 flex flex-col justify-between"
+              ? "h-full bg-[#FAFAFA] fixed top-0 border-r border-[#EDEDED] duration-100 flex flex-col justify-between z-30 w-[240px] -left-[240px] md:left-0"
+              : "w-[240px] h-full bg-[#FAFAFA] fixed top-0 left-0 md:-left-[240px] border-r border-[#EDEDED] duration-100 flex flex-col justify-between z-30"
           }
         >
           <ColorLogo

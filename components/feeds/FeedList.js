@@ -6,12 +6,7 @@ import tw from "tailwind-styled-components";
 
 // css 추가
 const ListContainer = tw.div`
-  w-full
-  sm:w-[calc(50%-10px)] 
-  lg:w-[calc(100%/3-40px/3)]
-  xl:w-[calc(25%-15px)]  
-  2xl:w-[calc(20%-16px)] 
-  h-fit
+  w-[280px]
   border-[1px]
   border-[#ddd]
   rounded-lg 
@@ -21,25 +16,30 @@ const ListContainer = tw.div`
 `;
 
 let FeedList = (props) => {
-  let { links } = props;
-  const [urlList, setURlList] = useState([]); //배열로 초기화
+  let { links, commonModalData, setCommonModalData } = props;
+  const [postList, setPostList] = useState([]); //배열로 초기화
 
   useEffect(() => {
-    setURlList(links.urlPost);
+    setPostList(links.postList);
   }, []);
 
   return (
     <>
-      {urlList.map((data) => (
-        <ListContainer key={data._id}>
-          <FeedItem
-            img={data.item_image_url}
-            title={data.item_title}
-            description={data.item_description}
-            url={data.item_url}
-          />
-        </ListContainer>
-      ))}
+      <div className="flex flex-wrap gap-5 relative">
+        {postList.map((data) => (
+          <ListContainer key={data._id}>
+            <FeedItem
+              id={data._id}
+              img={data.item_image_url}
+              title={data.item_title}
+              description={data.item_description}
+              url={data.item_url}
+              commonModalData={commonModalData}
+              setCommonModalData={setCommonModalData}
+            />
+          </ListContainer>
+        ))}
+      </div>
     </>
   );
 };

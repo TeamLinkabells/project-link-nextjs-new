@@ -24,6 +24,7 @@ export default async function handler(req, res) {
       item_description: description,
       item_image_url: image,
       item_url: url,
+      favorites: false, //첫 생성시, 즐겨찾기는 false로 생성함
       author: authData,
     });
 
@@ -35,4 +36,3 @@ export default async function handler(req, res) {
     });
   }
 }
-

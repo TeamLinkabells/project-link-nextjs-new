@@ -27,10 +27,15 @@ mt-3 inline-flex justify-center rounded-md bg-white text-base font-medium text-g
 function ShowModal(props) {
   let { urlModalOpenFunc, urlData, setUrlData, setUrlShowModal } = props; //url 입력을 관리하는 변수
 
+  console.log("urlData : ", urlData);
+
   const [cookies, setCookie, removeCookie] = useCookies(["token"]);
+
+  console.log("토큰", cookies.token.accessToken);
 
   //받아온 링크 정보
   const [linkInfo, setLinkInfo] = useState({
+    id:"",
     title: "",
     description: "",
     image: "",
@@ -43,7 +48,7 @@ function ShowModal(props) {
   }, []);
 
   let creteUrlPost = async () => {
-    return await axios.post("http://localhost:3000/api/links/feed", linkInfo, {
+    return await axios.post("http://localhost:3000/api/feed", linkInfo, {
       headers: {
         accessToken: cookies.token.accessToken,
       },
@@ -60,9 +65,10 @@ function ShowModal(props) {
   let func = () => {
     getData().then((res) => {
       if (res.status === 200) {
-        console.log("리스폰스 데이터", res.data)
+        console.log("리스폰스 데이터", res.data);
         setLinkInfo({
           ...linkInfo,
+          id: res.data._id,
           title: res.data.title,
           description: res.data.description,
           image: res.data.image,

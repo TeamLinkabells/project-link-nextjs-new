@@ -3,34 +3,54 @@ import { useState } from "react";
 import { useCookies } from "react-cookie";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import InputModal from "../InputModal";
 
 import SidebarBtn from "../../public/sidebar_button.svg";
 import ColorLogo from "../../public/logo_color.svg";
 import Setting from "../../public/setting.svg";
 import Logout from "../../public/logout.svg";
 import tw from "tailwind-styled-components";
+import CommonModal from "../CommonModal";
 
 const SidebarMenu = tw.div`
 h-10 flex items-center text-[#666666] hover:bg-[#E1EEFF]
 `;
 
 function SideNavBar(props) {
-  let { urlModalOpenFunc, urlData, setUrlData } = props;
-  // console.log("내브바", props);
+  let { commonModalData, setCommonModalData, inputToggleFunc, data } = props;
+  // console.log("로그아웃 모달", commonModalData);
 
   const [cookies, setCookie, removeCookie] = useCookies(["token"]);
   const [toggleMenu, setTogleMenu] = useState(true);
 
   const router = useRouter();
 
-  let logOutBtn = () => {
-    removeCookie("token", { path: "/" });
-    //그 후 home페이지로 이동
-    router.push("/");
-  };
-
+  //새 링크 올리기 모달
   const menuOpenFunc = () => {
     setTogleMenu(!toggleMenu); // on,off 개념 boolean
+  };
+
+  //전체 링크 목록
+  let ClickAllNote = () => {
+    router.push(`/feed/${cookies.token.id}`);
+  };
+
+  //즐겨찾는 링크
+  let clickFavoriteNote = () => {
+    router.push(`/feed/favorite/${cookies.token.id}`);
+  };
+
+  //로그아웃
+  let logOutBtn = () => {
+    console.log("로그아웃 버튼을 눌렀습니다.");
+    setCommonModalData({
+      ...commonModalData,
+      text: "로그아웃",
+      state: true,
+    });
+    // removeCookie("token", { path: "/" });
+    // //그 후 home페이지로 이동
+    // router.push("/");
   };
 
   return (
@@ -60,21 +80,29 @@ function SideNavBar(props) {
             <div className="mx-6">
               <button
                 className="w-full h-10 bg-white border border-[#0074FF] rounded-[5px] text-[#0074FF] font-medium"
-                onClick={urlModalOpenFunc}
+                onClick={() => {
+                  inputToggleFunc(true);
+                }}
               >
                 새 링크 올리기
               </button>
             </div>
             <ul className="mt-5">
               <SidebarMenu>
-                <Link href="#" className="w-full h-full flex items-center px-6">
+                <button
+                  className="w-full h-full flex items-center px-6"
+                  onClick={ClickAllNote}
+                >
                   전체 링크
-                </Link>
+                </button>
               </SidebarMenu>
               <SidebarMenu>
-                <Link href="#" className="w-full h-full flex items-center px-6">
+                <button
+                  className="w-full h-full flex items-center px-6"
+                  onClick={clickFavoriteNote}
+                >
                   즐겨찾는 링크
-                </Link>
+                </button>
               </SidebarMenu>
             </ul>
           </div>
@@ -88,7 +116,6 @@ function SideNavBar(props) {
                 <Logout />
                 <button
                   onClick={() => {
-                    alert("로그아웃 하시겠습니까?");
                     logOutBtn();
                   }}
                 >

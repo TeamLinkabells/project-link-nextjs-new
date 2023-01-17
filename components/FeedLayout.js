@@ -15,8 +15,7 @@ let FeedLayout = (props) => {
     text: "",
     state: false,
   });
-
-  const test = "";
+  const [searchData, setSeacrhData] = useState("");
 
   //url 인풋 모달 토글 함수
   let inputToggleFunc = () => {
@@ -56,8 +55,8 @@ let FeedLayout = (props) => {
       {/* 로그아웃 모달 */}
       {commonModalData.state === true ? (
         <CommonModal
-        commonModalData={commonModalData}
-        setCommonModalData={setCommonModalData}
+          commonModalData={commonModalData}
+          setCommonModalData={setCommonModalData}
         ></CommonModal>
       ) : (
         ""
@@ -70,8 +69,11 @@ let FeedLayout = (props) => {
           setCommonModalData={setCommonModalData}
         ></SideNavBar>
         <div className="w-[100%]">
-          <Header />
-          {React.cloneElement(children, {commonModalData , setCommonModalData})}
+          <Header searchData={searchData} setSeacrhData={setSeacrhData} />
+          {React.cloneElement(children, {
+            commonModalData,
+            setCommonModalData,
+          })}
         </div>
       </div>
     </>

@@ -81,7 +81,7 @@ function ShowModal(props) {
   return (
     <>
       <div
-        className="relative z-10"
+        className="relative z-40"
         aria-labelledby="modal-title"
         role="dialog"
         aria-modal="true"
@@ -106,10 +106,10 @@ function ShowModal(props) {
                         className="w-full object-cover"
                       ></img>
                     </div>
-                    <div className="mt-5 sm:flex h-[60px] bg-[#f1f1f5] rounded-md flex items-center p-4 text-[#666]">
+                    <div className="mt-5 sm:flex bg-[#f1f1f5] rounded-md flex items-start p-4 text-[#666]">
                       <h3 className="w-full break-all">{linkInfo.title}</h3>
                     </div>
-                    <div className="mt-5 sm:flex h-[120px] bg-[#f1f1f5] rounded-md flex items-start p-4 text-[#666]">
+                    <div className="mt-5 sm:flex h-[120px] bg-[#f1f1f5] rounded-md flex items-start p-4 text-[#666] overflow-y-auto">
                       <p className="w-full break-all">{linkInfo.description}</p>
                     </div>
                     <div className="flex justify-end gap-5 mt-5">

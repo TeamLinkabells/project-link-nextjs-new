@@ -3,7 +3,7 @@ import SideNavBar from "./feeds/SideNavBar";
 import Header from "./Header";
 import InputModal from "./InputModal";
 import ShowModal from "./ShowModal";
-import CommonModal from "./CommonModal";
+import CommonModal from "./feeds/CommonModal";
 import React from "react";
 
 let FeedLayout = (props) => {

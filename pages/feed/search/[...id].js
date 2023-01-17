@@ -21,10 +21,9 @@ export default function Search({ data }) {
 
   return (
     <>
-      <section className="text-gray-600 m-auto px-20 py-5">
-        <div className="container">
+      <section className="text-gray-600 m-auto px-[60px] md:pl-[100px] md:pr-[60px] py-10">
+        <div>
           <div className="flex flex-wrap gap-5" />
-          <h1>서치 페이지 입니다.</h1>
           <FeedLayout setUrlData={setUrlData} urlData={urlData}>
             <FeedView links={data} />
           </FeedLayout>

@@ -2,10 +2,13 @@ import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import axios from "axios";
-import CommonModal from "../CommonModal";
+// import CommonModal from "./CommonModal";
 
 import Delete from "../../public/delete.svg";
 import Bookmark from "../../public/bookmark.svg";
+import BookmarkOn from "../../public/bookmark_on.svg";
+import Bookmark2 from "../../public/bookmark_2.svg";
+import Heart from "../../public/heart.svg"
 
 let FeedItem = (props) => {
   let { img, title, description, url, commonModalData, setCommonModalData } =
@@ -75,7 +78,8 @@ let FeedItem = (props) => {
             onClick={unFavotieSubmitBtn}
             className="absolute bottom-5 right-5"
           >
-            <Bookmark className="stroke-[#59A5FF] hover:stroke-[#999]" />
+            {/* <Bookmark className="stroke-[#59A5FF] hover:stroke-[#999]" /> */}
+            <Bookmark2 className="-[#FFC700]" />
           </button>
         ) : (
           <button
@@ -84,15 +88,17 @@ let FeedItem = (props) => {
           >
             {favoriteSubmitBtn()}
             {favoriteState ? (
-              <Bookmark className="stroke-[#59A5FF] hover:stroke-[#999]" />
+              // <Bookmark className="stroke-[#59A5FF] hover:stroke-[#999]" />
+              <BookmarkOn className="fill-[#FFC700]" />
             ) : (
               <Bookmark className="stroke-[#ccc] hover:stroke-[#999]" />
             )}
           </button>
         )}
       </div>
-      <div className="p-5 flex flex-col justify-between h-[212px]">
-        <div>
+      <Link href={url} target="blank">
+        <div className="p-5 flex flex-col justify-between h-[156px]">
+
           <h3 className="text-xl text-black font-medium line-clamp-1 break-all">
             {title}
           </h3>
@@ -103,15 +109,18 @@ let FeedItem = (props) => {
             {url}{" "}
           </p>
         </div>
-        <button
-          onClick={() => {
-            deleteBtn();
-          }}
-          className="mt-4"
-        >
-          <Delete className="hover:fill-[#59A5FF]" />
-        </button>
-      </div>
+
+      </Link>
+      <button
+        onClick={() => {
+          deleteBtn();
+        }}
+        className="ml-4 mb-4"
+      >
+        <Delete className="hover:fill-[#59A5FF]" />
+      </button>
+
+
     </>
   );
 };

@@ -5,16 +5,9 @@ import ShowModal from "../ShowModal";
 import FeedList from "./FeedList";
 
 let FeedView = (props) => {
-  let {
-    urlInputModal,
-    setInputUrlModal,
-    urlModalOpenFunc,
-    urlData,
-    setUrlData,
-    urlShowModal,
-    setUrlShowModal,
-    links,
-  } = props;
+  let { links , commonModalData, setCommonModalData } = props;
+
+  // console.log("피드뷰 props", props)
 
   const [inputData, setInputData] = useState("");
 
@@ -22,38 +15,38 @@ let FeedView = (props) => {
     setInputData;
   };
 
-  if (urlInputModal) {
-    return (
-      <>
-        <InputModal
-          urlInputModal={urlInputModal}
-          setInputUrlModal={setInputUrlModal}
-          urlModalOpenFunc={urlModalOpenFunc}
-          urlData={urlData}
-          setUrlData={setUrlData}
-          setUrlShowModal={setUrlShowModal}
-        ></InputModal>
-      </>
-    );
-  }
-  if (urlShowModal) {
-    return (
-      <>
-        <ShowModal
-          urlInputModal={urlInputModal}
-          setInputUrlModal={setInputUrlModal}
-          urlModalOpenFunc={urlModalOpenFunc}
-          urlData={urlData}
-          setUrlData={setUrlData}
-          setUrlShowModal={setUrlShowModal}
-        ></ShowModal>
-      </>
-    );
-  }
+  // if (urlInputModal) {
+  //   return (
+  //     <>
+  //       <InputModal
+  //         urlInputModal={urlInputModal}
+  //         setInputUrlModal={setInputUrlModal}
+  //         urlModalOpenFunc={urlModalOpenFunc}
+  //         urlData={urlData}
+  //         setUrlData={setUrlData}
+  //         setUrlShowModal={setUrlShowModal}
+  //       ></InputModal>
+  //     </>
+  //   );
+  // }
+  // if (urlShowModal) {
+  //   return (
+  //     <>
+  //       <ShowModal
+  //         urlInputModal={urlInputModal}
+  //         setInputUrlModal={setInputUrlModal}
+  //         urlModalOpenFunc={urlModalOpenFunc}
+  //         urlData={urlData}
+  //         setUrlData={setUrlData}
+  //         setUrlShowModal={setUrlShowModal}
+  //       ></ShowModal>
+  //     </>
+  //   );
+  // }
 
   return (
     <>
-      <FeedList links={links}></FeedList>
+      <FeedList links={links} commonModalData={commonModalData} setCommonModalData={setCommonModalData} ></FeedList>
     </>
   );
 };

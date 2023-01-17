@@ -23,7 +23,14 @@ mt-3 inline-flex justify-center rounded-md bg-white text-base font-medium text-g
 //css ---------------------------------------------------------
 
 function InputModal(props) {
-  let { urlModalOpenFunc, setUrlData, setUrlShowModal } = props; //url 입력을 관리하는 변수
+  let {
+    setUrlData,
+    urlData,
+    setUrlShowModal,
+    urlInputModal,
+    setUrlInputModal,
+    inputToggleFunc,
+  } = props; //url 입력을 관리하는 변수
 
   const [inputData, setInputData] = useState("");
 
@@ -65,7 +72,7 @@ function InputModal(props) {
                         type="button"
                         onClick={() => {
                           setUrlData(inputData);
-                          urlModalOpenFunc();
+                          inputToggleFunc();
                           setUrlShowModal(true);
                           // setStaus(true);
                         }}
@@ -76,7 +83,7 @@ function InputModal(props) {
                   </div>
                 </div>
               </div>
-              <ModalCloseBtn type="button" onClick={urlModalOpenFunc}>
+              <ModalCloseBtn type="button" onClick={inputToggleFunc}>
                 <Close />
               </ModalCloseBtn>
             </div>

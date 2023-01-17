@@ -15,6 +15,9 @@ const postSchema = new Schema({
     type: String,
     required: true,
   },
+  favorites: {
+    type: Boolean,
+  },
   author: {
     type: Schema.Types.ObjectId,
     ref: "User", //참조 collection

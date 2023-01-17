@@ -21,7 +21,8 @@ let FeedList = (props) => {
 
   useEffect(() => {
     setPostList(links.postList);
-  }, []);
+  });
+
 
   return (
     <>

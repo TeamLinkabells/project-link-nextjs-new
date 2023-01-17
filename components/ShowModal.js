@@ -5,6 +5,7 @@ import axios from "axios";
 
 import Close from "../public/close.svg";
 import tw from "tailwind-styled-components";
+import { useRouter } from "next/router";
 
 //css ---------------------------------------------------------
 const ModalBg = tw.div`
@@ -27,15 +28,13 @@ mt-3 inline-flex justify-center rounded-md bg-white text-base font-medium text-g
 function ShowModal(props) {
   let { urlModalOpenFunc, urlData, setUrlData, setUrlShowModal } = props; //url 입력을 관리하는 변수
 
-  console.log("urlData : ", urlData);
-
   const [cookies, setCookie, removeCookie] = useCookies(["token"]);
 
-  console.log("토큰", cookies.token.accessToken);
+  const router = useRouter();
 
   //받아온 링크 정보
   const [linkInfo, setLinkInfo] = useState({
-    id:"",
+    id: "",
     title: "",
     description: "",
     image: "",
@@ -131,7 +130,7 @@ function ShowModal(props) {
                               console.log(res);
                               if (res.data.status) {
                                 alert(res.data.message);
-                                window.location.reload();
+                                router.push(`/feed/${cookies.token.id}`);
                               }
                             })
                             .catch((err) => {

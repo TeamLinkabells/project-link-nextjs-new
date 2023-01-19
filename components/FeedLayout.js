@@ -9,17 +9,29 @@ import React from "react";
 let FeedLayout = (props) => {
   const { children, setUrlData, urlData } = props;
 
-  const [urlInputModal, setUrlInputModal] = useState(false);
-  const [urlShowModal, setUrlShowModal] = useState(false);
+  // const [urlInputModal, setUrlInputModal] = useState(false);    =>사용 inputModalData 변수로 대체
+  const [urlShowModal, setUrlShowModal] = useState({
+    text: "",
+    state: false,
+  });
   const [commonModalData, setCommonModalData] = useState({
     text: "",
     state: false,
   });
   const [searchData, setSeacrhData] = useState("");
+  const [inputModalData, setInputModalData] = useState({
+    title: "",
+    btnName: "",
+    placeholer : "",
+    state: false,
+  });
 
   //url 인풋 모달 토글 함수
   let inputToggleFunc = () => {
-    setUrlInputModal(!urlInputModal);
+    setInputModalData({
+      ...inputModalData,
+      state: false,
+    });
   };
 
   // console.log("피드 레이아웃", props.children);
@@ -27,26 +39,23 @@ let FeedLayout = (props) => {
   return (
     <>
       {/* URL input 모달 */}
-      {urlInputModal ? (
+      {inputModalData.state === true ? (
         <InputModal
-          urlInputModal={urlInputModal}
-          setUrlInputModal={setUrlInputModal}
-          inputToggleFunc={inputToggleFunc}
-          urlData={urlData}
           setUrlData={setUrlData}
           setUrlShowModal={setUrlShowModal}
+          inputToggleFunc={inputToggleFunc}
+          inputModalData={inputModalData}
+          urlShowModal={urlShowModal}
         ></InputModal>
       ) : (
         ""
       )}
       {/* URL show 모달 */}
-      {urlShowModal ? (
+      {urlShowModal.state === true ? (
         <ShowModal
-          urlInputModal={urlInputModal}
-          setUrlInputModal={setUrlInputModal}
-          inputToggleFunc={inputToggleFunc}
           urlData={urlData}
           setUrlData={setUrlData}
+          urlShowModal={urlShowModal}
           setUrlShowModal={setUrlShowModal}
         ></ShowModal>
       ) : (
@@ -61,12 +70,15 @@ let FeedLayout = (props) => {
       ) : (
         ""
       )}
+
       {/* 기본 Side-Navbar & Header */}
       <div className="flex">
         <SideNavBar
           inputToggleFunc={inputToggleFunc}
           commonModalData={commonModalData}
           setCommonModalData={setCommonModalData}
+          inputModalData={inputModalData}
+          setInputModalData={setInputModalData}
         ></SideNavBar>
         <div className="w-[100%]">
           <Header searchData={searchData} setSeacrhData={setSeacrhData} />

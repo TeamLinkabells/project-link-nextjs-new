@@ -4,25 +4,33 @@ import { useCookies } from "react-cookie";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import InputModal from "../InputModal";
-import { useMediaQuery } from 'react-responsive'
 
 import SidebarBtn from "../../public/sidebar_button.svg";
 import ColorLogo from "../../public/logo_color.svg";
 import Setting from "../../public/setting.svg";
 import Logout from "../../public/logout.svg";
 import tw from "tailwind-styled-components";
-// import CommonModal from "./CommonModal";
+import FolderInput from "../folder/FolderInput";
+import FolderList from "../folder/FolderList";
 
 const SidebarMenu = tw.div`
 h-10 flex items-center text-[#666666] hover:bg-[#E1EEFF]
 `;
 
 function SideNavBar(props) {
-  let { commonModalData, setCommonModalData, inputToggleFunc, data } = props;
+  let {
+    commonModalData,
+    setCommonModalData,
+    inputToggleFunc,
+    inputModalData,
+    setInputModalData,
+  } = props;
   // console.log("로그아웃 모달", commonModalData);
 
   const [cookies, setCookie, removeCookie] = useCookies(["token"]);
   const [toggleMenu, setTogleMenu] = useState(true);
+  const [folderShow, setFolderShow] = useState(false);
+  const [folderName, setFolderName] = useState("새폴더");
 
   const router = useRouter();
 
@@ -41,6 +49,17 @@ function SideNavBar(props) {
     router.push(`/feed/favorite/${cookies.token.id}`);
   };
 
+  // commonModal에 '폴더'값을 넣어줌
+  let folderAdd = () => {
+    setInputModalData({
+      ...inputModalData,
+      title: "폴더명 입력",
+      btnName: "생성",
+      placeholer: "폴더명을 입력해주세요",
+      state: true,
+    });
+  };
+
   //로그아웃
   let logOutBtn = () => {
     console.log("로그아웃 버튼을 눌렀습니다.");
@@ -49,14 +68,15 @@ function SideNavBar(props) {
       text: "로그아웃",
       state: true,
     });
-    // removeCookie("token", { path: "/" });
-    // //그 후 home페이지로 이동
-    // router.push("/");
   };
 
   return (
     <>
-      <div className={toggleMenu ? "h-screen w-0 md:w-[240px]" : "h-screen w-[240px] md:w-0"}>
+      <div
+        className={
+          toggleMenu ? "h-screen w-0 md:w-[240px]" : "h-screen w-[240px] md:w-0"
+        }
+      >
         <div
           className={
             toggleMenu
@@ -82,7 +102,13 @@ function SideNavBar(props) {
               <button
                 className="w-full h-10 bg-white border border-[#0074FF] rounded-[5px] text-[#0074FF] font-medium"
                 onClick={() => {
-                  inputToggleFunc(true);
+                  setInputModalData({
+                    ...inputModalData,
+                    title: "링크 입력",
+                    btnName: "등록",
+                    placeholer: "링크를 입력해주세요",
+                    state: true,
+                  });
                 }}
               >
                 새 링크 올리기
@@ -105,7 +131,27 @@ function SideNavBar(props) {
                   즐겨찾는 링크
                 </button>
               </SidebarMenu>
+              내폴더
+              <SidebarMenu>
+                <button
+                  className="w-full h-full flex items-center px-6"
+                  onClick={() => {
+                    folderAdd();
+                  }}
+                >
+                  +
+                </button>
+              </SidebarMenu>
+              {folderShow ? (
+                <SidebarMenu>
+                  로고
+                  <FolderInput />
+                </SidebarMenu>
+              ) : (
+                ""
+              )}
             </ul>
+            <FolderList></FolderList>
           </div>
           <div>
             <ul className="mx-6 mb-7">

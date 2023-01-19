@@ -6,9 +6,9 @@ import axios from "axios";
 
 import Delete from "../../public/delete.svg";
 import Bookmark from "../../public/bookmark.svg";
-import BookmarkOn from "../../public/bookmark_on.svg";
-import Bookmark2 from "../../public/bookmark_2.svg";
-import Heart from "../../public/heart.svg"
+// import BookmarkOn from "../../public/bookmark_on.svg";
+// import Bookmark2 from "../../public/bookmark_2.svg";
+// import Heart from "../../public/heart.svg"
 
 let FeedItem = (props) => {
   let { img, title, description, url, commonModalData, setCommonModalData } =
@@ -78,8 +78,8 @@ let FeedItem = (props) => {
             onClick={unFavotieSubmitBtn}
             className="absolute bottom-5 right-5"
           >
-            {/* <Bookmark className="stroke-[#59A5FF] hover:stroke-[#999]" /> */}
-            <Bookmark2 className="-[#FFC700]" />
+            <Bookmark className="stroke-[#59A5FF] hover:stroke-[#999]" />
+            {/* <Bookmark2 className="-[#FFC700]" /> */}
           </button>
         ) : (
           <button
@@ -88,8 +88,8 @@ let FeedItem = (props) => {
           >
             {favoriteSubmitBtn()}
             {favoriteState ? (
-              // <Bookmark className="stroke-[#59A5FF] hover:stroke-[#999]" />
-              <BookmarkOn className="fill-[#FFC700]" />
+              <Bookmark className="stroke-[#59A5FF] hover:stroke-[#999]" />
+              // <BookmarkOn className="fill-[#FFC700]" />
             ) : (
               <Bookmark className="stroke-[#ccc] hover:stroke-[#999]" />
             )}

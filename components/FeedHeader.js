@@ -1,7 +1,7 @@
 import React from 'react'
 
 import InputSearchBtn from '../public/input_search.svg'
-// import ArrowDown from '../public/arrow_down.svg'
+
 
 import tw from "tailwind-styled-components";
 

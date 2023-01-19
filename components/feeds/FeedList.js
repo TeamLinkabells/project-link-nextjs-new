@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import FeedItem from "./FeedItem";
 
-import ArrowDown from '../../public/arrow_down.svg'
+import ArrowDown from "../../public/arrow_down.svg";
 
 import tw from "tailwind-styled-components";
 
@@ -23,7 +23,7 @@ const SelectBoxBtn = tw.button`
   text-[#666] 
   hover:border-[#999] 
   duration-200
-`
+`;
 const SelectListContainer = tw.ul`
   w-[120px] 
   shadow-[0_10px_20px_5px_rgba(0,0,0,0.08)] 
@@ -36,7 +36,7 @@ const SelectListContainer = tw.ul`
   left-0 
   z-10 
   bg-white
-`
+`;
 const SelectList = tw.ul`
   h-10 
   flex 
@@ -46,7 +46,7 @@ const SelectList = tw.ul`
   px-2 
   rounded-md 
   text-[#999]
-`
+`;
 
 let FeedList = (props) => {
   let { links, commonModalData, setCommonModalData } = props;
@@ -56,16 +56,18 @@ let FeedList = (props) => {
     setPostList(links.postList);
   });
 
-
   return (
     <>
       {/* 정렬 start */}
       <div className="relative mt-10">
-        <SelectBoxBtn>최신순<ArrowDown className="ml-2" /></SelectBoxBtn>
+        {/* <SelectBoxBtn>
+          최신순
+          <ArrowDown className="ml-2" />
+        </SelectBoxBtn>
         <SelectListContainer>
           <SelectList>최신순</SelectList>
           <SelectList>이름순</SelectList>
-        </SelectListContainer>
+        </SelectListContainer> */}
       </div>
       {/* 정렬 end */}
       <div className="flex flex-wrap gap-5 relative mt-8">

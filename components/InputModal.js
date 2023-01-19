@@ -25,11 +25,10 @@ mt-3 inline-flex justify-center rounded-md bg-white text-base font-medium text-g
 function InputModal(props) {
   let {
     setUrlData,
-    urlData,
     setUrlShowModal,
-    urlInputModal,
-    setUrlInputModal,
     inputToggleFunc,
+    inputModalData,
+    urlShowModal,
   } = props; //url 입력을 관리하는 변수
 
   const [inputData, setInputData] = useState("");
@@ -54,14 +53,14 @@ function InputModal(props) {
                       className="text-lg leading-6 text-gray-900 font-medium flex"
                       id="modal-title"
                     >
-                      링크 입력
+                      {inputModalData.title}
                     </h3>
                     <div className="mt-5 sm:flex">
                       <ModalInput
                         type="text"
                         name="contents"
                         value={inputData}
-                        placeholder="링크를 입력해 주세요."
+                        placeholder={inputModalData.placeholer}
                         onChange={(e) => {
                           {
                             setInputData(e.target.value);
@@ -73,11 +72,15 @@ function InputModal(props) {
                         onClick={() => {
                           setUrlData(inputData);
                           inputToggleFunc();
-                          setUrlShowModal(true);
+                          setUrlShowModal({
+                            ...urlShowModal,
+                            text: inputModalData.btnName,
+                            state: true,
+                          });
                           // setStaus(true);
                         }}
                       >
-                        제출
+                        {inputModalData.btnName}
                       </ModalSubmitBtn>
                     </div>
                   </div>

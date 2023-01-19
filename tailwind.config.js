@@ -5,7 +5,11 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        'remove': "url('/public/remove.svg')",
+      }
+    },
   },
   plugins: [
     require('@tailwindcss/line-clamp'),

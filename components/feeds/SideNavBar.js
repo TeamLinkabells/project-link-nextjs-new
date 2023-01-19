@@ -9,16 +9,18 @@ import SidebarBtn from "../../public/sidebar_button.svg";
 import ColorLogo from "../../public/logo_color.svg";
 import Setting from "../../public/setting.svg";
 import Logout from "../../public/logout.svg";
+import Add from "../../public/add.svg";
 import tw from "tailwind-styled-components";
 import FolderInput from "../folder/FolderInput";
 import FolderList from "../folder/FolderList";
 
-const SidebarMenu = tw.div`
+const SidebarMenu = tw.li`
 h-10 
 flex 
 items-center 
 text-[#666666] 
-hover:bg-[#E1EEFF]
+hover:bg-[#f1f1f1]
+px-6
 `;
 
 function SideNavBar(props) {
@@ -28,7 +30,7 @@ function SideNavBar(props) {
     inputToggleFunc,
     inputModalData,
     setInputModalData,
-    settingModalData, 
+    settingModalData,
     setSettingModalData,
   } = props;
   // console.log("로그아웃 모달", commonModalData);
@@ -127,7 +129,7 @@ function SideNavBar(props) {
             <ul className="mt-5">
               <SidebarMenu>
                 <button
-                  className="w-full h-full flex items-center px-6"
+                  className="w-full h-full flex items-center"
                   onClick={ClickAllNote}
                 >
                   전체 링크
@@ -135,21 +137,20 @@ function SideNavBar(props) {
               </SidebarMenu>
               <SidebarMenu>
                 <button
-                  className="w-full h-full flex items-center px-6"
+                  className="w-full h-full flex items-center"
                   onClick={clickFavoriteNote}
                 >
                   즐겨찾는 링크
                 </button>
               </SidebarMenu>
-              내폴더
-              <SidebarMenu>
+              <SidebarMenu className="text-sm text-[#bbb] font-medium mt-10 hover:bg-transparent justify-between">
+                <p>내폴더</p>
                 <button
-                  className="w-full h-full flex items-center px-6"
                   onClick={() => {
                     folderAdd();
                   }}
                 >
-                  +
+                  <Add />
                 </button>
               </SidebarMenu>
               {folderShow ? (

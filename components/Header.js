@@ -29,19 +29,22 @@ let Header = (props) => {
 
   const pathname = router.pathname;
 
-  console.log("피스 네임",pathname[1])
-
+  // console.log("패스 네임",pathname[1])
 
   let searchFunc = () => {
     router.push(`/feed/search/${cookies.token.id}/${searchData}`);
   };
 
-
   return (
     <>
       <div className="flex border-b border-[#ededed] pb-6">
         <h3 className="text-[22px] font-medium text-black">
-          {pathname.includes("favorite") ? "즐겨찾는 링크": pathname.includes("search") ? "검색 링크" : "전체 링크"}</h3>
+          {pathname.includes("favorite")
+            ? "즐겨찾는 링크"
+            : pathname.includes("search")
+            ? "검색 링크"
+            : "전체 링크"}
+        </h3>
         <div className="ml-auto relative h-10">
           <SearchInput
             onChange={(e) => {

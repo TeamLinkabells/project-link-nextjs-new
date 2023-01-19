@@ -5,7 +5,7 @@ import ShowModal from "../ShowModal";
 import FeedList from "./FeedList";
 
 let FeedView = (props) => {
-  let { links , commonModalData, setCommonModalData } = props;
+  let { links , commonModalData, setCommonModalData, moveModalData, setMoveModalData } = props;
 
   // console.log("피드뷰 props", props)
 
@@ -46,7 +46,15 @@ let FeedView = (props) => {
 
   return (
     <>
-      <FeedList links={links} commonModalData={commonModalData} setCommonModalData={setCommonModalData} ></FeedList>
+      <FeedList 
+      links={links} 
+      commonModalData={commonModalData} 
+      setCommonModalData={setCommonModalData}
+      moveModalData={moveModalData}
+      setMoveModalData={setMoveModalData}
+       >
+
+       </FeedList>
     </>
   );
 };

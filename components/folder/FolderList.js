@@ -6,16 +6,6 @@ import axios from "axios";
 import tw from "tailwind-styled-components";
 import FolderItem from "./FolderItem";
 
-const ListContainer = tw.div`
-  w-[280px]
-  border-[1px]
-  border-[#ddd]
-  rounded-lg 
-  overflow-hidden
-  hover:bg-[#F2F7FF]
-  inli
-  `;
-
 let FolderList = () => {
   const [folderList, setFolerList] = useState([]); //배열로 초기화
   const [cookies, setCookie, removeCookie] = useCookies(["token"]);
@@ -39,9 +29,9 @@ let FolderList = () => {
     <>
       <div>
         {folderList.map((data) => (
-          <ListContainer key={data._id}>
+          <div key={data._id}>
             <FolderItem id={data._id} folder_title={data.folder_title} />
-          </ListContainer>
+          </div>
         ))}
       </div>
     </>

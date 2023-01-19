@@ -5,14 +5,13 @@ import axios from "axios";
 // import CommonModal from "./CommonModal";
 
 import Delete from "../../public/delete.svg";
+import Movement from "../../public/movement.svg";
 import Bookmark from "../../public/bookmark.svg";
-// import BookmarkOn from "../../public/bookmark_on.svg";
-// import Bookmark2 from "../../public/bookmark_2.svg";
-// import Heart from "../../public/heart.svg"
+import BookmarkOn from "../../public/bookmark_on.svg";
 
 let FeedItem = (props) => {
-  let { img, title, description, url, commonModalData, setCommonModalData } =
-    props;
+  let { img, title, description, url, commonModalData, setCommonModalData, moveModalData, setMoveModalData } = props;
+  console.log("이동 모달", moveModalData);
   const router = useRouter();
 
   const id = router.query.id || ["로딩중"];
@@ -56,7 +55,7 @@ let FeedItem = (props) => {
     setFavortieState(!favoriteState);
   };
 
-  //아이템 삭제
+  // 아이템 삭제
   let deleteBtn = () => {
     console.log("삭제 버튼을 눌렀습니다.");
     setCommonModalData({
@@ -69,6 +68,12 @@ let FeedItem = (props) => {
     // 그건 CommonModal에서 할 것임
   };
 
+  // 폴더 이동
+  let movementBtn = () => {
+    setMoveModalData(!moveModalData);
+    // console.log("이동 모달", moveModalData);
+  };
+
   return (
     <>
       <div className="h-[180px] overflow-hidden flex items-center justify-center border-b border-[#ddd] relative">
@@ -78,8 +83,8 @@ let FeedItem = (props) => {
             onClick={unFavotieSubmitBtn}
             className="absolute bottom-5 right-5"
           >
-            <Bookmark className="stroke-[#59A5FF] hover:stroke-[#999]" />
-            {/* <Bookmark2 className="-[#FFC700]" /> */}
+            {/* <Bookmark className="stroke-[#59A5FF] hover:stroke-[#999]" /> */}
+            <BookmarkOn />
           </button>
         ) : (
           <button
@@ -88,8 +93,8 @@ let FeedItem = (props) => {
           >
             {favoriteSubmitBtn()}
             {favoriteState ? (
-              <Bookmark className="stroke-[#59A5FF] hover:stroke-[#999]" />
-              // <BookmarkOn className="fill-[#FFC700]" />
+              // <Bookmark className="stroke-[#59A5FF] hover:stroke-[#999]" />
+              <BookmarkOn />
             ) : (
               <Bookmark className="stroke-[#ccc] hover:stroke-[#999]" />
             )}
@@ -111,14 +116,22 @@ let FeedItem = (props) => {
         </div>
 
       </Link>
-      <button
-        onClick={() => {
-          deleteBtn();
-        }}
-        className="ml-4 mb-4"
-      >
-        <Delete className="hover:fill-[#59A5FF]" />
-      </button>
+      <div className="flex items-center justify-between px-5 pb-5">
+        <button
+          onClick={() => {
+            deleteBtn();
+          }}
+        >
+          <Delete className="hover:fill-[#59A5FF]" />
+        </button>
+        <button
+          onClick={() => {
+            movementBtn();
+          }}
+        >
+          <Movement />
+        </button>
+      </div>
 
 
     </>

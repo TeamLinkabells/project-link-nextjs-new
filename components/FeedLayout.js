@@ -4,6 +4,8 @@ import Header from "./Header";
 import InputModal from "./InputModal";
 import ShowModal from "./ShowModal";
 import CommonModal from "./feeds/CommonModal";
+import MovementModal from "./MovementModal";
+import SettingModal from "./SettingModal";
 import React from "react";
 
 let FeedLayout = (props) => {
@@ -25,6 +27,8 @@ let FeedLayout = (props) => {
     placeholer : "",
     state: false,
   });
+  const [settingModalData, setSettingModalData] = useState(false);
+  const [moveModalData, setMoveModalData] = useState(false);
 
   //url 인풋 모달 토글 함수
   let inputToggleFunc = () => {
@@ -70,7 +74,24 @@ let FeedLayout = (props) => {
       ) : (
         ""
       )}
-
+      {/* 폴더이동 모달 */}
+      {moveModalData === true ? (
+        <MovementModal
+          moveModalData={moveModalData}
+          setMoveModalData={setMoveModalData}
+        ></MovementModal>
+      ) : (
+        ""
+      )}
+      {/* 세팅 모달 */}
+      {settingModalData === true ? (
+        <SettingModal
+          settingModalData={settingModalData}
+          setSettingModalData={setSettingModalData}
+        ></SettingModal>
+      ) : (
+        ""
+      )}
       {/* 기본 Side-Navbar & Header */}
       <div className="flex">
         <SideNavBar
@@ -79,12 +100,16 @@ let FeedLayout = (props) => {
           setCommonModalData={setCommonModalData}
           inputModalData={inputModalData}
           setInputModalData={setInputModalData}
+          settingModalData={settingModalData}
+          setSettingModalData={setSettingModalData}
         ></SideNavBar>
         <div className="w-[100%]">
           <Header searchData={searchData} setSeacrhData={setSeacrhData} />
           {React.cloneElement(children, {
             commonModalData,
             setCommonModalData,
+            moveModalData,
+            setMoveModalData
           })}
         </div>
       </div>

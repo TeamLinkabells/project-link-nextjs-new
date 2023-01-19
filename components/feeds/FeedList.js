@@ -49,7 +49,8 @@ const SelectList = tw.ul`
 `;
 
 let FeedList = (props) => {
-  let { links, commonModalData, setCommonModalData } = props;
+  let { links, commonModalData, setCommonModalData, moveModalData, setMoveModalData } = props;
+  
   const [postList, setPostList] = useState([]); //배열로 초기화
 
   useEffect(() => {
@@ -59,16 +60,16 @@ let FeedList = (props) => {
   return (
     <>
       {/* 정렬 start */}
-      <div className="relative mt-10">
-        {/* <SelectBoxBtn>
+      {/* <div className="relative mt-10">
+        <SelectBoxBtn>
           최신순
           <ArrowDown className="ml-2" />
         </SelectBoxBtn>
         <SelectListContainer>
           <SelectList>최신순</SelectList>
           <SelectList>이름순</SelectList>
-        </SelectListContainer> */}
-      </div>
+        </SelectListContainer>
+      </div> */}
       {/* 정렬 end */}
       <div className="flex flex-wrap gap-5 relative mt-8">
         {postList.map((data) => (
@@ -81,6 +82,8 @@ let FeedList = (props) => {
               url={data.item_url}
               commonModalData={commonModalData}
               setCommonModalData={setCommonModalData}
+              moveModalData={moveModalData}
+              setMoveModalData={setMoveModalData}
             />
           </ListContainer>
         ))}

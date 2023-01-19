@@ -14,7 +14,11 @@ import FolderInput from "../folder/FolderInput";
 import FolderList from "../folder/FolderList";
 
 const SidebarMenu = tw.div`
-h-10 flex items-center text-[#666666] hover:bg-[#E1EEFF]
+h-10 
+flex 
+items-center 
+text-[#666666] 
+hover:bg-[#E1EEFF]
 `;
 
 function SideNavBar(props) {
@@ -24,6 +28,8 @@ function SideNavBar(props) {
     inputToggleFunc,
     inputModalData,
     setInputModalData,
+    settingModalData, 
+    setSettingModalData,
   } = props;
   // console.log("로그아웃 모달", commonModalData);
 
@@ -58,6 +64,10 @@ function SideNavBar(props) {
       placeholer: "폴더명을 입력해주세요",
       state: true,
     });
+  }
+  //설정
+  let settingModalOpen = () => {
+    setSettingModalData(!settingModalData);
   };
 
   //로그아웃
@@ -156,17 +166,20 @@ function SideNavBar(props) {
           <div>
             <ul className="mx-6 mb-7">
               <li className="flex mt-6 text-[#666666] cursor-pointer w-fit">
-                <Setting />
-                <p className="ml-2">설정</p>
+                <button
+                  onClick={() => {
+                    settingModalOpen();
+                  }}
+                >
+                  <p className="flex"><Setting className="mr-2" />설정</p></button>
               </li>
               <li className="flex mt-6 text-[#666666] cursor-pointer w-fit">
-                <Logout />
                 <button
                   onClick={() => {
                     logOutBtn();
                   }}
                 >
-                  <p className="ml-2">로그아웃</p>
+                  <p className="flex"><Logout className="mr-2" />로그아웃</p>
                 </button>
               </li>
             </ul>

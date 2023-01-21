@@ -18,7 +18,7 @@ const Home = () => {
     if (cookies.token !== undefined) {
       router.push(`/feed/${cookies.token.id}`);
     }
-  }, []);
+  });
 
   //로그인이 되어있지 않을 때
   return (

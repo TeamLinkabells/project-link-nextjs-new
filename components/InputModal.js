@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 
 import Close from "../public/close.svg";
@@ -24,6 +24,7 @@ mt-3 inline-flex justify-center rounded-md bg-white text-base font-medium text-g
 
 function InputModal(props) {
   let {
+    urlData,
     setUrlData,
     setUrlShowModal,
     inputToggleFunc,
@@ -32,6 +33,43 @@ function InputModal(props) {
   } = props; //url 입력을 관리하는 변수
 
   const [inputData, setInputData] = useState("");
+
+  let checkInputFunc = () => {
+    //공통
+    if (inputData === "") {
+      alert("내용을 입력해주세요");
+    } else {
+      //링크
+      if (inputModalData.btnName === "등록") {
+        let regexWeb = /(http(s)?:\/\/)([a-z0-9\w]+\.*)+[a-z0-9]{2,4}/gi;
+        let correctUrl = regexWeb.test(inputData);
+
+        if (correctUrl === true) {
+          setUrlData(inputData);
+          inputToggleFunc();
+          setUrlShowModal({
+            ...urlShowModal,
+            text: inputModalData.btnName,
+            state: true,
+          });
+        } else if (correctUrl === false) {
+          alert("올바른 형식의 url을 입력해주세요");
+          setInputData("");
+        }
+      }
+
+      //생성
+      if (inputModalData.btnName === "생성") {
+        setUrlData(inputData);
+        inputToggleFunc();
+        setUrlShowModal({
+          ...urlShowModal,
+          text: inputModalData.btnName,
+          state: true,
+        });
+      }
+    }
+  };
 
   return (
     <>
@@ -70,14 +108,7 @@ function InputModal(props) {
                       <ModalSubmitBtn
                         type="button"
                         onClick={() => {
-                          setUrlData(inputData);
-                          inputToggleFunc();
-                          setUrlShowModal({
-                            ...urlShowModal,
-                            text: inputModalData.btnName,
-                            state: true,
-                          });
-                          // setStaus(true);
+                          checkInputFunc(); //1
                         }}
                       >
                         {inputModalData.btnName}

@@ -22,6 +22,9 @@ const postSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "User", //참조 collection
   },
+  folder: {
+    type: String,
+  },
   created: {
     type: Date,
     default: Date.now,

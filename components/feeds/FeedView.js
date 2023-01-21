@@ -11,38 +11,6 @@ let FeedView = (props) => {
 
   const [inputData, setInputData] = useState("");
 
-  let handleSubmitBtn = () => {
-    setInputData;
-  };
-
-  // if (urlInputModal) {
-  //   return (
-  //     <>
-  //       <InputModal
-  //         urlInputModal={urlInputModal}
-  //         setInputUrlModal={setInputUrlModal}
-  //         urlModalOpenFunc={urlModalOpenFunc}
-  //         urlData={urlData}
-  //         setUrlData={setUrlData}
-  //         setUrlShowModal={setUrlShowModal}
-  //       ></InputModal>
-  //     </>
-  //   );
-  // }
-  // if (urlShowModal) {
-  //   return (
-  //     <>
-  //       <ShowModal
-  //         urlInputModal={urlInputModal}
-  //         setInputUrlModal={setInputUrlModal}
-  //         urlModalOpenFunc={urlModalOpenFunc}
-  //         urlData={urlData}
-  //         setUrlData={setUrlData}
-  //         setUrlShowModal={setUrlShowModal}
-  //       ></ShowModal>
-  //     </>
-  //   );
-  // }
 
   return (
     <>

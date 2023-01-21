@@ -10,15 +10,25 @@ import Bookmark from "../../public/bookmark.svg";
 import BookmarkOn from "../../public/bookmark_on.svg";
 
 let FeedItem = (props) => {
-  let { img, title, description, url, commonModalData, setCommonModalData, moveModalData, setMoveModalData } = props;
-  console.log("이동 모달", moveModalData);
+  let {
+    img,
+    title,
+    description,
+    url,
+    favorites,
+    commonModalData,
+    setCommonModalData,
+    moveModalData,
+    setMoveModalData,
+  } = props;
+
   const router = useRouter();
 
   const id = router.query.id || ["로딩중"];
   const pathname = router.pathname;
 
   // console.log("쿼리 아이디", id);
-  // console.log("현재 url", pathname.includes("favorite"));
+  console.log("즐겨찾기 정보", favorites);
 
   const [linkInfo, setLinkInfo] = useState({
     id: props.id,
@@ -70,7 +80,11 @@ let FeedItem = (props) => {
 
   // 폴더 이동
   let movementBtn = () => {
-    setMoveModalData(!moveModalData);
+    setMoveModalData({
+      ...moveModalData,
+      id: linkInfo.id,
+      state: true,
+    });
     // console.log("이동 모달", moveModalData);
   };
 
@@ -92,7 +106,7 @@ let FeedItem = (props) => {
             className="absolute bottom-5 right-5"
           >
             {favoriteSubmitBtn()}
-            {favoriteState ? (
+            {favorites ? (
               // <Bookmark className="stroke-[#59A5FF] hover:stroke-[#999]" />
               <BookmarkOn />
             ) : (
@@ -103,7 +117,6 @@ let FeedItem = (props) => {
       </div>
       <Link href={url} target="blank">
         <div className="p-5 flex flex-col justify-between h-[156px]">
-
           <h3 className="text-xl text-black font-medium line-clamp-1 break-all">
             {title}
           </h3>
@@ -114,7 +127,6 @@ let FeedItem = (props) => {
             {url}{" "}
           </p>
         </div>
-
       </Link>
       <div className="flex items-center justify-between px-5 pb-5">
         <button
@@ -132,8 +144,6 @@ let FeedItem = (props) => {
           <Movement />
         </button>
       </div>
-
-
     </>
   );
 };

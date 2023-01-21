@@ -26,7 +26,13 @@ mt-3 inline-flex justify-center rounded-md bg-white text-base font-medium text-g
 //css ---------------------------------------------------------
 
 function ShowModal(props) {
-  let { urlData, setUrlShowModal, urlShowModal } = props; //url 입력을 관리하는 변수
+  let {
+    urlData,
+    setUrlShowModal,
+    urlShowModal,
+    inputModalData,
+    setInputModalData,
+  } = props; //url 입력을 관리하는 변수
 
   const [cookies, setCookie, removeCookie] = useCookies(["token"]);
 
@@ -49,7 +55,6 @@ function ShowModal(props) {
   });
 
   useEffect(() => {
-    console.log("urlShowModal의 값", urlShowModal);
     func(linkInfo);
   }, []);
 
@@ -73,7 +78,7 @@ function ShowModal(props) {
 
   let getData = () => {
     return axios.get(
-      `https://api.linkpreview.net/?key=2e31fedc1f9e62e652e94bc6756c5606&q=${urlData}`,
+      `https://api.linkpreview.net/?key=${process.env.NEXT_PUBLIC_API_KEY}&q=${urlData}`,
       {}
     );
   };
@@ -91,13 +96,11 @@ function ShowModal(props) {
             image: res.data.image,
             url: res.data.url,
           });
-
           return;
         }
       });
     }
     if (urlShowModal.text === "생성") {
-      console.log("생성 클릭 시 input정보", urlData);
       setUrlShowModal({
         ...urlShowModal,
         state: "false",
@@ -117,7 +120,7 @@ function ShowModal(props) {
             title: "",
           });
         }
-        router.reload()
+        router.reload();
       });
     }
   };

@@ -11,7 +11,7 @@ import React from "react";
 let FeedLayout = (props) => {
   const { children, setUrlData, urlData } = props;
 
-  // const [urlInputModal, setUrlInputModal] = useState(false);    =>사용 inputModalData 변수로 대체
+  const [folderListArray, setFolderListArray] = useState([]); // 폴더 관련 Array
   const [urlShowModal, setUrlShowModal] = useState({
     text: "",
     state: false,
@@ -24,11 +24,14 @@ let FeedLayout = (props) => {
   const [inputModalData, setInputModalData] = useState({
     title: "",
     btnName: "",
-    placeholer : "",
+    placeholer: "",
     state: false,
   });
   const [settingModalData, setSettingModalData] = useState(false);
-  const [moveModalData, setMoveModalData] = useState(false);
+  const [moveModalData, setMoveModalData] = useState({
+    id: "",
+    state: false,
+  });
 
   //url 인풋 모달 토글 함수
   let inputToggleFunc = () => {
@@ -45,6 +48,7 @@ let FeedLayout = (props) => {
       {/* URL input 모달 */}
       {inputModalData.state === true ? (
         <InputModal
+          urlData={urlData}
           setUrlData={setUrlData}
           setUrlShowModal={setUrlShowModal}
           inputToggleFunc={inputToggleFunc}
@@ -61,6 +65,8 @@ let FeedLayout = (props) => {
           setUrlData={setUrlData}
           urlShowModal={urlShowModal}
           setUrlShowModal={setUrlShowModal}
+          inputModalData={inputModalData}
+          setInputModalData={setInputModalData}
         ></ShowModal>
       ) : (
         ""
@@ -75,10 +81,12 @@ let FeedLayout = (props) => {
         ""
       )}
       {/* 폴더이동 모달 */}
-      {moveModalData === true ? (
+      {moveModalData.state === true ? (
         <MovementModal
           moveModalData={moveModalData}
           setMoveModalData={setMoveModalData}
+          folderListArray={folderListArray}
+          setFolderListArray={setFolderListArray}
         ></MovementModal>
       ) : (
         ""
@@ -86,6 +94,8 @@ let FeedLayout = (props) => {
       {/* 세팅 모달 */}
       {settingModalData === true ? (
         <SettingModal
+          commonModalData={commonModalData}
+          setCommonModalData={setCommonModalData}
           settingModalData={settingModalData}
           setSettingModalData={setSettingModalData}
         ></SettingModal>
@@ -95,7 +105,9 @@ let FeedLayout = (props) => {
       {/* 기본 Side-Navbar & Header */}
       <div className="flex">
         <SideNavBar
-          inputToggleFunc={inputToggleFunc}
+          urlData={urlData}
+          folderListArray={folderListArray}
+          setFolderListArray={setFolderListArray}
           commonModalData={commonModalData}
           setCommonModalData={setCommonModalData}
           inputModalData={inputModalData}
@@ -109,7 +121,7 @@ let FeedLayout = (props) => {
             commonModalData,
             setCommonModalData,
             moveModalData,
-            setMoveModalData
+            setMoveModalData,
           })}
         </div>
       </div>

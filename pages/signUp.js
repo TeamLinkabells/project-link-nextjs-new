@@ -41,13 +41,31 @@ export default function SignUp() {
   // 회원가입 버튼을 클릭 했을때, 유효성 검사 후,
   // axios를 사용해서 서버에 요청!
   let clickSignUpBtn = async () => {
+    let regExp =
+      /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+
+    let regPwd = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+
+    let correctEmail = regExp.test(signUpData.email);
+    let correctPassword = regPwd.test(signUpData.password);
+
     if (signUpData.email === "") {
       alert("이메일을 입력해주세요.");
       return;
     }
 
+    if (correctEmail === false) {
+      alert("이메일 형식을 확인해주세요");
+      return;
+    }
+
     if (signUpData.password === "") {
       alert("비밀번호를 입력해주세요.");
+      return;
+    }
+
+    if (correctPassword === false) {
+      alert("최소 8 자, 최소 하나의 문자 및 하나의 숫자를 포함해 주세요");
       return;
     }
 
@@ -162,7 +180,7 @@ export default function SignUp() {
                       console.log("리스폰스", res.data);
                       if (res.data.status) {
                         alert(res.data.message);
-                        router.push("/login");
+                        router.push("/");
                       } else {
                         //에러 메시지를 보여주고
                         setErrorMsg(res.data.message);

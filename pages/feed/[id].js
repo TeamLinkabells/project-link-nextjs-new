@@ -4,13 +4,18 @@ import React, { useState } from "react";
 
 import FeedLayout from "../../components/FeedLayout";
 import FeedView from "../../components/feeds/FeedView";
+import { useCookies } from "react-cookie";
 
 export default function Feed({ data }) {
+
+  const [cookies, setCookie, removeCookie] = useCookies(["token"]);
+
   const router = useRouter();
 
   const id = router.query.id || ["로딩중"];
 
-  const [urlData, setUrlData] = useState(""); //url 입력 데이터
+  const [urlData, setUrlData] = useState(""); //url 입력 데이터4
+
 
   return (
     <>

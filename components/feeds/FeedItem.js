@@ -7,6 +7,7 @@ import Delete from "../../public/delete.svg";
 import Movement from "../../public/movement.svg";
 import Bookmark from "../../public/bookmark.svg";
 import BookmarkOn from "../../public/bookmark_on.svg";
+import UrlModal from "../common/modal/UrlModal";
 
 let FeedItem = (props) => {
   let {
@@ -26,6 +27,7 @@ let FeedItem = (props) => {
   const id = router.query.id || ["로딩중"];
   const pathname = router.pathname;
 
+  const [showUrlModal, setShowUrlModal] = useState(false);
   const [favoriteState, setFavortieState] = useState(false);
   const [count, setCount] = useState(0);
 
@@ -71,6 +73,8 @@ let FeedItem = (props) => {
       router.reload();
     }
   };
+
+  let showUrlBtn = () => {};
 
   // 아이템 삭제
   let deleteBtn = () => {
@@ -123,7 +127,13 @@ let FeedItem = (props) => {
           </button>
         )}
       </div>
-      <Link href={url} target="blank">
+      {/* <Link href={url} target="blank"> */}
+      <div
+        onClick={() => {
+          setShowUrlModal(true);
+          console.log("바꿨습니다.");
+        }}
+      >
         <div className="p-5 flex flex-col justify-between h-[156px]">
           <h3 className="text-xl text-black font-medium line-clamp-1 break-all">
             {title}
@@ -135,7 +145,17 @@ let FeedItem = (props) => {
             {url}{" "}
           </p>
         </div>
-      </Link>
+      </div>
+      {showUrlModal ? (
+        <UrlModal
+          showUrlModal={showUrlModal}
+          setShowUrlModal={setShowUrlModal}
+          url={url}
+        />
+      ) : (
+        ""
+      )}
+      {/* </Link> */}
       <div className="flex items-center justify-between px-5 pb-5">
         <button
           onClick={() => {

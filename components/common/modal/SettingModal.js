@@ -1,7 +1,7 @@
 import React from "react";
 import { useCookies } from "react-cookie";
 
-import Close from "../public/close.svg";
+import Close from "../../../public/close.svg";
 
 import tw from "tailwind-styled-components";
 
@@ -73,7 +73,7 @@ function SettingModal(props) {
           </div>
           <WithdrawalBtn
             onClick={() => {
-              console.log("실행중입니다");
+              // console.log("실행중입니다");
               setSettingModalData(false);
               setCommonModalData({
                 ...commonModalData,

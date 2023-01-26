@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 
-import FeedLayout from "../../../components/FeedLayout";
+import Layout from "../../../components/common/Layout";
 import FeedView from "../../../components/feeds/FeedView";
 
 export default function Folder({ data }) {
@@ -12,9 +12,7 @@ export default function Folder({ data }) {
 
   const [urlData, setUrlData] = useState(""); //url 입력 데이터
   const [favoriteData, setFavoriteData] = useState(""); //url 입력 데이터
-
-  console.log("데이터 입니다.", data);
-
+  
   useEffect(() => {
     // router.reload()
   }, [data]);
@@ -24,9 +22,9 @@ export default function Folder({ data }) {
       <section className="text-gray-600 m-auto px-[60px] md:pl-[100px] md:pr-[60px] py-10">
         <div>
           <div className="flex flex-wrap gap-5" />
-          <FeedLayout setUrlData={setUrlData} urlData={urlData} >
+          <Layout setUrlData={setUrlData} urlData={urlData}>
             <FeedView links={data} />
-          </FeedLayout>
+          </Layout>
         </div>
       </section>
     </>

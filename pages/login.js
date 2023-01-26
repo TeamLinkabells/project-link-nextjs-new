@@ -106,7 +106,7 @@ export default function login() {
                 onClick={() => {
                   clickLoginBtn()
                     .then((res) => {
-                      console.log("리스폰스", res.data);
+                      // console.log("리스폰스", res.data);
                       if (res.data.status) {
                         setCookie("token", res.data, { path: "/" });
                         router.push(`/feed/${res.data.id}`);

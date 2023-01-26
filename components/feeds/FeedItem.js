@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import axios from "axios";
-// import CommonModal from "./CommonModal";
 
 import Delete from "../../public/delete.svg";
 import Movement from "../../public/movement.svg";
@@ -27,8 +26,25 @@ let FeedItem = (props) => {
   const id = router.query.id || ["로딩중"];
   const pathname = router.pathname;
 
-  // console.log("쿼리 아이디", id);
-  console.log("즐겨찾기 정보", favorites);
+  const [favoriteState, setFavortieState] = useState(false);
+  const [count, setCount] = useState(0);
+
+  //페이지가 처음 렌더링 될 때 favorites의 값을 받아서 변수에 넣어줘야 함
+  useEffect(() => {
+    // console.log("서버에서 받아온 값", favorites);
+    setFavortieState(favorites);
+  }, []);
+
+  useEffect(() => {
+    if (count > 0) {
+      console.log("useEffect 실행된다");
+      if (favoriteState === true) {
+        favoriteData();
+      } else {
+        unFavotieSubmitBtn();
+      }
+    }
+  }, [favoriteState]);
 
   const [linkInfo, setLinkInfo] = useState({
     id: props.id,
@@ -38,9 +54,9 @@ let FeedItem = (props) => {
     url: props.url,
   });
 
-  const [favoriteState, setFavortieState] = useState(false);
-
+  // ==========================================================================
   let favoriteData = () => {
+    // console.log("전송되었습니다.");
     return axios.post(`http://localhost:3000/api/favorite`, linkInfo);
   };
 
@@ -48,26 +64,17 @@ let FeedItem = (props) => {
     return axios.post(`http://localhost:3000/api/favorite/uncheck`, linkInfo);
   };
 
-  let favoriteSubmitBtn = () => {
-    // console.log("토글 후 값", favoriteState);
-    if (favoriteState === true) {
-      favoriteData().then((res) => console.log(res));
-    }
-  };
-
   let unFavotieSubmitBtn = () => {
     alert("즐겨찾기를 해제하시겠습니까?");
     unFavoriteData().then((res) => console.log(res));
-    router.reload();
-  };
-
-  let favoriteToggle = () => {
-    setFavortieState(!favoriteState);
+    if (pathname.includes("favorite")) {
+      router.reload();
+    }
   };
 
   // 아이템 삭제
   let deleteBtn = () => {
-    console.log("삭제 버튼을 눌렀습니다.");
+    // console.log("삭제 버튼을 눌렀습니다.");
     setCommonModalData({
       ...commonModalData,
       text: "삭제",
@@ -75,7 +82,7 @@ let FeedItem = (props) => {
       id: linkInfo.id,
     });
     // //그 후 axios로 api 요청 보내야 함
-    // 그건 CommonModal에서 할 것임
+    // 그건 CommonModal에서 할 것
   };
 
   // 폴더 이동
@@ -102,12 +109,13 @@ let FeedItem = (props) => {
           </button>
         ) : (
           <button
-            onClick={favoriteToggle}
+            onClick={() => {
+              setFavortieState(!favoriteState);
+              setCount(count + 1);
+            }}
             className="absolute bottom-5 right-5"
           >
-            {favoriteSubmitBtn()}
-            {favorites ? (
-              // <Bookmark className="stroke-[#59A5FF] hover:stroke-[#999]" />
+            {favoriteState ? (
               <BookmarkOn />
             ) : (
               <Bookmark className="stroke-[#ccc] hover:stroke-[#999]" />

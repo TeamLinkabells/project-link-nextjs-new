@@ -1,14 +1,14 @@
 import { useState } from "react";
-import SideNavBar from "./feeds/SideNavBar";
+import SideNavBar from "./SideNavBar";
 import Header from "./Header";
-import InputModal from "./InputModal";
-import ShowModal from "./ShowModal";
-import CommonModal from "./feeds/CommonModal";
-import MovementModal from "./MovementModal";
-import SettingModal from "./SettingModal";
+import InputModal from "./modal/InputModal";
+import ShowModal from "./modal/ShowModal";
+import CommonModal from "./modal/CommonModal";
+import MovementModal from "./modal/MovementModal";
+import SettingModal from "./modal/SettingModal";
 import React from "react";
 
-let FeedLayout = (props) => {
+let Layout = (props) => {
   const { children, setUrlData, urlData } = props;
 
   const [folderListArray, setFolderListArray] = useState([]); // 폴더 관련 Array
@@ -128,4 +128,4 @@ let FeedLayout = (props) => {
     </>
   );
 };
-export default FeedLayout;
+export default Layout;

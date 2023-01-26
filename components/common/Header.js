@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import { useCookies } from "react-cookie";
 
-import InputSearchBtn from "../public/input_search.svg";
+import InputSearchBtn from "../../public/input_search.svg";
 
 import tw from "tailwind-styled-components";
 

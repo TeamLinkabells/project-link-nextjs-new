@@ -177,7 +177,6 @@ export default function SignUp() {
                 onClick={() => {
                   clickSignUpBtn()
                     .then((res) => {
-                      console.log("리스폰스", res.data);
                       if (res.data.status) {
                         alert(res.data.message);
                         router.push("/");
@@ -194,7 +193,7 @@ export default function SignUp() {
                       }
                     })
                     .catch((e) => {
-                      console.log(e);
+                      // console.log(e);
                     });
                 }}
               >

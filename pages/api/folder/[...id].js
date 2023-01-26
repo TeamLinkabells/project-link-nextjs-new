@@ -9,7 +9,6 @@ export default async function handler(req, res) {
     console.log("폴더 쿼리입니다.", id.length);
 
     if (id.length === 1) {
-      console.log("1입니다");
 
       console.log("CONNECTING TO MONGO");
 
@@ -26,7 +25,6 @@ export default async function handler(req, res) {
     }
 
     if (id.length === 2) {
-      console.log("2입니다", id);
 
       console.log("CONNECTING TO MONGO");
 

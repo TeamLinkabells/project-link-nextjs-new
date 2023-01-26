@@ -62,14 +62,13 @@ function MovementModal(props) {
   });
 
   let handleRadioBtn = (e) => {
-    console.log(e.target.value);
     setCheckedInput({
       ...checkedInput,
       folder: e.target.value,
     });
   };
 
-  console.log("checkedInput :", checkedInput);
+  // console.log("checkedInput :", checkedInput);
 
   let folderUpdate = async () => {
     return await axios.post(
@@ -85,7 +84,7 @@ function MovementModal(props) {
 
   let folderFunc = () => {
     folderUpdate().then((res) => {
-      console.log(res.data);
+      // console.log(res.data);
     });
     router.reload();
   };

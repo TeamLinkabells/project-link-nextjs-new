@@ -1,11 +1,12 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { useCookies } from "react-cookie";
+import { useRouter } from "next/router";
 import axios from "axios";
 
-import Close from "../public/close.svg";
 import tw from "tailwind-styled-components";
-import { useRouter } from "next/router";
+
+import Close from "../../../public/close.svg";
 
 //css ---------------------------------------------------------
 const ModalBg = tw.div`
@@ -87,7 +88,7 @@ function ShowModal(props) {
     if (urlShowModal.text === "등록") {
       getData().then((res) => {
         if (res.status === 200) {
-          console.log("url response 데이터", res.data);
+          // console.log("url response 데이터", res.data);
           setLinkInfo({
             ...linkInfo,
             id: res.data._id,
@@ -107,12 +108,12 @@ function ShowModal(props) {
       });
       //여기에서 folderInfo에 담긴 값을 axios로 보내줄것임
       createFolder().then((res) => {
-        console.log("folder response", res.data);
+        // console.log("folder response", res.data);
         if (res.data.status) {
           alert(res.data.message);
         } else {
           //에러 메시지를 보여주고
-          console.log("에러", res);
+          // console.log("에러", res);
           alert(res.data.message);
           //input의 모든 데이터를 없앰
           setFolerInfo({
@@ -174,7 +175,7 @@ function ShowModal(props) {
                         onClick={() => {
                           creteUrlPost()
                             .then((res) => {
-                              console.log(res);
+                              // console.log(res);
                               if (res.data.status) {
                                 alert(res.data.message);
                                 setUrlShowModal({
@@ -185,7 +186,7 @@ function ShowModal(props) {
                               }
                             })
                             .catch((err) => {
-                              console.log(err);
+                              // console.log(err);
                             });
                         }}
                       >

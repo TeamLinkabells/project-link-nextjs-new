@@ -19,34 +19,34 @@ hover:bg-[url('../public/remove.svg')]
   `;
 
 let FolderItem = (props) => {
-  let { folder_id, folder_title } = props;
+  let { folder_id, folder_title, user_id } = props;
 
   const router = useRouter();
   const [cookies, setCookie, removeCookie] = useCookies(["token"]);
 
   const [folderItemInfo, setFolderIteminfo] = useState({
-    user_id: cookies.token.id,
+    user_id: user_id,
     folder_id: folder_id,
     folder_title: folder_title,
   });
 
   let clickFolderFunc = () => {
-    console.log("눌렀다");
-    router.push(`/feed/folder/${cookies.token.id}/${folder_title}`);
+    router.push(`/feed/folder/${user_id}/${folder_title}`);
   };
 
   let folderDelete = async () => {
-    console.log("삭제");
     return await axios.delete(
       "http://localhost:3000/api/folder/move",
-      { data: { 
-        folderItemInfo
-       } }
-      // {
-      //   headers: {
-      //     accessToken: cookies.token.accessToken,
-      //   },
-      // }
+      {
+        data: {
+          folderItemInfo,
+        },
+      },
+      {
+        headers: {
+          accessToken: cookies.token.accessToken,
+        },
+      }
     );
   };
 
@@ -60,12 +60,11 @@ let FolderItem = (props) => {
           <button
             onClick={() => {
               folderDelete().then((res) => {
-                console.log("folder response", res.data);
+                // console.log("folder response", res.data);
                 if (res.data.status) {
                   alert(res.data.message);
                 } else {
                   //에러 메시지를 보여주고
-                  console.log("에러", res);
                   alert(res.data.message);
                 }
                 router.reload();

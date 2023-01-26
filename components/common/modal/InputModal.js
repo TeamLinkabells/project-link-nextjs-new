@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 
-import Close from "../public/close.svg";
+import Close from "../../../public/close.svg";
 import tw from "tailwind-styled-components";
 
 //css ---------------------------------------------------------

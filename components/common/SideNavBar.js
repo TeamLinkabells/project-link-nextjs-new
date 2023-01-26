@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useCookies } from "react-cookie";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import InputModal from "../InputModal";
+import InputModal from "./modal/InputModal";
 
 import SidebarBtn from "../../public/sidebar_button.svg";
 import ColorLogo from "../../public/logo_color.svg";
@@ -75,7 +75,7 @@ function SideNavBar(props) {
 
   //로그아웃
   let logOutBtn = () => {
-    console.log("로그아웃 버튼을 눌렀습니다.");
+    // console.log("로그아웃 버튼을 눌렀습니다.");
     setCommonModalData({
       ...commonModalData,
       text: "로그아웃",

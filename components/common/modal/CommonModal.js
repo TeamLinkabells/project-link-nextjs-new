@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { useCookies } from "react-cookie";
 
-import Warning from "../../public/warning.svg";
+import Warning from "../../../public/warning.svg";
 import tw from "tailwind-styled-components";
 import axios from "axios";
 
@@ -71,28 +71,23 @@ function CommonModal(props) {
   //
   let id = commonModalData.id;
 
-  console.log("커먼 모달", id);
-  console.log("유저 데이터" ,userData)
 
   let checkModalState = () => {
-    console.log("커먼 모달 데이터", commonModalData);
- 
+    // console.log("커먼 모달 데이터", commonModalData);
+
     if (commonModalData.text === "로그아웃") {
       removeCookie("token", { path: "/" });
       //그 후 home페이지로 이동
       router.push("/");
     }
     if (commonModalData.text === "삭제") {
-      console.log("삭제중");
+      // console.log("삭제중");
       deleteData().then((res) => {
-        console.log(res);
         router.reload();
       });
     }
     if (commonModalData.text === "탈퇴") {
-      console.log("탈퇴중");
-      console.log("탈퇴중");
-      console.log("탈퇴중");
+      // console.log("탈퇴중");
       deleteAccount().then((res) => {
         if (res.data.status) {
           alert(res.data.message);
@@ -100,7 +95,7 @@ function CommonModal(props) {
           router.push("/");
         } else {
           //에러 메시지를 보여주고
-          console.log("에러", res);
+          // console.log("에러", res);
           alert(res.data.message);
         }
       });

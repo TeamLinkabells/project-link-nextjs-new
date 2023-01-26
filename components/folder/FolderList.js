@@ -3,9 +3,7 @@ import { useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
 import axios from "axios";
 
-import tw from "tailwind-styled-components";
 import FolderItem from "./FolderItem";
-import MovementModal from "../MovementModal";
 
 let FolderList = (props) => {
   let { folderListArray, setFolderListArray } = props;
@@ -36,6 +34,7 @@ let FolderList = (props) => {
           <div key={data._id}>
             {index > 0 ? (
               <FolderItem
+                user_id={data.author._id}
                 folder_id={data._id}
                 folder_title={data.folder_title}
               />

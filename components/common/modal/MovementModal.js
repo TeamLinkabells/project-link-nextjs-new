@@ -105,8 +105,9 @@ function MovementModal(props) {
                   value={data.folder_title}
                   checked={checkedInput.folder === `${data.folder_title}`}
                   onChange={handleRadioBtn}
+                  className="mb-4"
                 />
-                <label htmlFor="folderRadio">{data.folder_title}</label>
+                <label htmlFor="folderRadio" className="ml-2">{data.folder_title}</label>
               </div>
             ))}
           </div>

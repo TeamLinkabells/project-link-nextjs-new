@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import { useCookies } from "react-cookie";
 
-import InputSearchBtn from "../public/input_search.svg";
+import InputSearchBtn from "../../public/input_search.svg";
 
 import tw from "tailwind-styled-components";
 
@@ -27,13 +27,13 @@ let Header = (props) => {
 
   const router = useRouter();
 
-  const pathname = router.pathname;
-
-  // console.log("패스 네임",pathname[1])
+  let pathname = router.pathname;
+  let title = router.query.id[1];
 
   let searchFunc = () => {
     router.push(`/feed/search/${cookies.token.id}/${searchData}`);
   };
+
 
   return (
     <>
@@ -43,6 +43,8 @@ let Header = (props) => {
             ? "즐겨찾는 링크"
             : pathname.includes("search")
             ? "검색 링크"
+            : pathname.includes("folder")
+            ? title
             : "전체 링크"}
         </h3>
         <div className="ml-auto relative h-10">

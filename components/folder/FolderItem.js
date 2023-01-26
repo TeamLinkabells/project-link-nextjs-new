@@ -1,5 +1,7 @@
 import { useState } from "react";
-
+import { useRouter } from "next/router";
+import { useCookies } from "react-cookie";
+import axios from "axios";
 
 import tw from "tailwind-styled-components";
 
@@ -17,27 +19,64 @@ hover:bg-[url('../public/remove.svg')]
   `;
 
 let FolderItem = (props) => {
-    let {id, folder_title } = props
+  let { folder_id, folder_title, user_id } = props;
 
-    const [folderItemInfo, setFolderIteminfo] = useState({
-        id : id,
-        folder_title : folder_title
-    })
+  const router = useRouter();
+  const [cookies, setCookie, removeCookie] = useCookies(["token"]);
 
-    return (
-        <>
-        
-        <div>
+  const [folderItemInfo, setFolderIteminfo] = useState({
+    user_id: user_id,
+    folder_id: folder_id,
+    folder_title: folder_title,
+  });
+
+  let clickFolderFunc = () => {
+    router.push(`/feed/folder/${user_id}/${folder_title}`);
+  };
+
+  let folderDelete = async () => {
+    return await axios.delete(
+      "http://localhost:3000/api/folder/move",
+      {
+        data: {
+          folderItemInfo,
+        },
+      },
+      {
+        headers: {
+          accessToken: cookies.token.accessToken,
+        },
+      }
+    );
+  };
+
+  return (
+    <>
+      <div>
         <ListContainer>
+          <button onClick={clickFolderFunc}>
             <h3>{folderItemInfo.folder_title}</h3>
-            <button className="text-transparent" onClick={()=>{
-                console.log("살려줘", folderItemInfo.folder_title)
-            }} >버</button>
-            </ListContainer>
-        </div>
-       
-        </>
-    )
-
-}
+          </button>
+          <button
+            onClick={() => {
+              folderDelete().then((res) => {
+                // console.log("folder response", res.data);
+                if (res.data.status) {
+                  alert(res.data.message);
+                } else {
+                  //에러 메시지를 보여주고
+                  alert(res.data.message);
+                }
+                router.reload();
+              });
+            }}
+            className="text-transparent"
+          >
+            버튼
+          </button>
+        </ListContainer>
+      </div>
+    </>
+  );
+};
 export default FolderItem;

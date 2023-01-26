@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useCookies } from "react-cookie";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import InputModal from "../InputModal";
+import InputModal from "./modal/InputModal";
 
 import SidebarBtn from "../../public/sidebar_button.svg";
 import ColorLogo from "../../public/logo_color.svg";
@@ -25,9 +25,11 @@ px-6
 
 function SideNavBar(props) {
   let {
+    urlData,
+    folderListArray,
+    setFolderListArray,
     commonModalData,
     setCommonModalData,
-    inputToggleFunc,
     inputModalData,
     setInputModalData,
     settingModalData,
@@ -38,7 +40,6 @@ function SideNavBar(props) {
   const [cookies, setCookie, removeCookie] = useCookies(["token"]);
   const [toggleMenu, setTogleMenu] = useState(true);
   const [folderShow, setFolderShow] = useState(false);
-  const [folderName, setFolderName] = useState("새폴더");
 
   const router = useRouter();
 
@@ -66,7 +67,7 @@ function SideNavBar(props) {
       placeholer: "폴더명을 입력해주세요",
       state: true,
     });
-  }
+  };
   //설정
   let settingModalOpen = () => {
     setSettingModalData(!settingModalData);
@@ -74,7 +75,7 @@ function SideNavBar(props) {
 
   //로그아웃
   let logOutBtn = () => {
-    console.log("로그아웃 버튼을 눌렀습니다.");
+    // console.log("로그아웃 버튼을 눌렀습니다.");
     setCommonModalData({
       ...commonModalData,
       text: "로그아웃",
@@ -100,7 +101,8 @@ function SideNavBar(props) {
             width="140"
             height="26"
             viewBox="0 0 300 60"
-            className="mx-auto mt-10"
+            className="mx-auto mt-10 cursor-pointer"
+            onClick={ClickAllNote}
           />
           <button
             className="absolute top-1/2 -right-5 translate-y-[-50%]"
@@ -162,7 +164,10 @@ function SideNavBar(props) {
                 ""
               )}
             </ul>
-            <FolderList></FolderList>
+            <FolderList
+              folderListArray={folderListArray}
+              setFolderListArray={setFolderListArray}
+            ></FolderList>
           </div>
           <div>
             <ul className="mx-6 mb-7">
@@ -172,7 +177,11 @@ function SideNavBar(props) {
                     settingModalOpen();
                   }}
                 >
-                  <p className="flex"><Setting className="mr-2" />설정</p></button>
+                  <p className="flex">
+                    <Setting className="mr-2" />
+                    설정
+                  </p>
+                </button>
               </li>
               <li className="flex mt-6 text-[#666666] cursor-pointer w-fit">
                 <button
@@ -180,7 +189,10 @@ function SideNavBar(props) {
                     logOutBtn();
                   }}
                 >
-                  <p className="flex"><Logout className="mr-2" />로그아웃</p>
+                  <p className="flex">
+                    <Logout className="mr-2" />
+                    로그아웃
+                  </p>
                 </button>
               </li>
             </ul>

@@ -3,18 +3,20 @@ import { useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
 import axios from "axios";
 
-import tw from "tailwind-styled-components";
 import FolderItem from "./FolderItem";
 
-let FolderList = () => {
-  const [folderList, setFolerList] = useState([]); //배열로 초기화
+let FolderList = (props) => {
+  let { folderListArray, setFolderListArray } = props;
+
   const [cookies, setCookie, removeCookie] = useCookies(["token"]);
 
+  //폴더 데이터 리스트를 가져와서 folderListArray에 저장
   useEffect(() => {
-    getFolderList().then((res) => {
-      // console.log("폴더리스트", res.data);
-      setFolerList(res.data.folderList);
-    });
+    if (cookies.token !== undefined) {
+      getFolderList().then((res) => {
+        setFolderListArray(res.data.folderList);
+      });
+    }
   }, []);
 
   //폴더 리스트를 가져오는 함수
@@ -28,9 +30,17 @@ let FolderList = () => {
   return (
     <>
       <div>
-        {folderList.map((data) => (
+        {folderListArray.map((data, index) => (
           <div key={data._id}>
-            <FolderItem id={data._id} folder_title={data.folder_title} />
+            {index > 0 ? (
+              <FolderItem
+                user_id={data.author._id}
+                folder_id={data._id}
+                folder_title={data.folder_title}
+              />
+            ) : (
+              ""
+            )}
           </div>
         ))}
       </div>

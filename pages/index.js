@@ -14,11 +14,10 @@ const Home = () => {
   // 만약 쿠키가 비워져있지 않다면 (즉, 로그인 되어있는 상태)
   //피드 전체 목록 페이지로 이동시킴
   useEffect(() => {
-    console.log(cookies);
     if (cookies.token !== undefined) {
       router.push(`/feed/${cookies.token.id}`);
     }
-  }, []);
+  });
 
   //로그인이 되어있지 않을 때
   return (

@@ -19,7 +19,10 @@ export default async function handler(req, res) {
 
     const authData = await User.findOne({ email });
 
-    const checkFolder = await Folder.findOne({ folder_title: title });
+    const checkFolder = await Folder.findOne({
+      folder_title: title,
+      author: authData.id,
+    });
 
     if (checkFolder) {
       res.json({

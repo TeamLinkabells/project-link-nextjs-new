@@ -1,17 +1,21 @@
 import { useRouter } from "next/router";
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import Layout from "../../../components/common/Layout";
 import FeedView from "../../../components/feeds/FeedView";
 
-export default function Favorite({ data }) {
+export default function Folder({ data }) {
   const router = useRouter();
 
   const id = router.query.id || ["로딩중"];
 
   const [urlData, setUrlData] = useState(""); //url 입력 데이터
   const [favoriteData, setFavoriteData] = useState(""); //url 입력 데이터
+  
+  useEffect(() => {
+    // router.reload()
+  }, [data]);
 
   return (
     <>
@@ -26,11 +30,14 @@ export default function Favorite({ data }) {
     </>
   );
 }
+
 export async function getServerSideProps(context) {
   const { params } = context;
   const id = params.id;
-  console.log("context.params", context);
-  const res = await axios.get(`http://localhost:3000/api/favorite/${id}`);
+  console.log("context.params", id[0]);
+  const res = await axios.get(
+    `http://localhost:3000/api/folder/${id[1]}/${id[0]}`
+  );
 
   const data = await res.data;
 

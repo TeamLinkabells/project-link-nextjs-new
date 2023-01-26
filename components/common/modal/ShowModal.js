@@ -1,11 +1,12 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { useCookies } from "react-cookie";
+import { useRouter } from "next/router";
 import axios from "axios";
 
-import Close from "../public/close.svg";
 import tw from "tailwind-styled-components";
-import { useRouter } from "next/router";
+
+import Close from "../../../public/close.svg";
 
 //css ---------------------------------------------------------
 const ModalBg = tw.div`
@@ -26,7 +27,13 @@ mt-3 inline-flex justify-center rounded-md bg-white text-base font-medium text-g
 //css ---------------------------------------------------------
 
 function ShowModal(props) {
-  let { urlData, setUrlShowModal, urlShowModal } = props; //url 입력을 관리하는 변수
+  let {
+    urlData,
+    setUrlShowModal,
+    urlShowModal,
+    inputModalData,
+    setInputModalData,
+  } = props; //url 입력을 관리하는 변수
 
   const [cookies, setCookie, removeCookie] = useCookies(["token"]);
 
@@ -49,7 +56,6 @@ function ShowModal(props) {
   });
 
   useEffect(() => {
-    console.log("urlShowModal의 값", urlShowModal);
     func(linkInfo);
   }, []);
 
@@ -73,7 +79,7 @@ function ShowModal(props) {
 
   let getData = () => {
     return axios.get(
-      `https://api.linkpreview.net/?key=2e31fedc1f9e62e652e94bc6756c5606&q=${urlData}`,
+      `https://api.linkpreview.net/?key=${process.env.NEXT_PUBLIC_API_KEY}&q=${urlData}`,
       {}
     );
   };
@@ -82,7 +88,7 @@ function ShowModal(props) {
     if (urlShowModal.text === "등록") {
       getData().then((res) => {
         if (res.status === 200) {
-          console.log("url response 데이터", res.data);
+          // console.log("url response 데이터", res.data);
           setLinkInfo({
             ...linkInfo,
             id: res.data._id,
@@ -91,25 +97,23 @@ function ShowModal(props) {
             image: res.data.image,
             url: res.data.url,
           });
-
           return;
         }
       });
     }
     if (urlShowModal.text === "생성") {
-      console.log("생성 클릭 시 input정보", urlData);
       setUrlShowModal({
         ...urlShowModal,
         state: "false",
       });
       //여기에서 folderInfo에 담긴 값을 axios로 보내줄것임
       createFolder().then((res) => {
-        console.log("folder response", res.data);
+        // console.log("folder response", res.data);
         if (res.data.status) {
           alert(res.data.message);
         } else {
           //에러 메시지를 보여주고
-          console.log("에러", res);
+          // console.log("에러", res);
           alert(res.data.message);
           //input의 모든 데이터를 없앰
           setFolerInfo({
@@ -117,7 +121,7 @@ function ShowModal(props) {
             title: "",
           });
         }
-        router.reload()
+        router.reload();
       });
     }
   };
@@ -171,7 +175,7 @@ function ShowModal(props) {
                         onClick={() => {
                           creteUrlPost()
                             .then((res) => {
-                              console.log(res);
+                              // console.log(res);
                               if (res.data.status) {
                                 alert(res.data.message);
                                 setUrlShowModal({
@@ -182,7 +186,7 @@ function ShowModal(props) {
                               }
                             })
                             .catch((err) => {
-                              console.log(err);
+                              // console.log(err);
                             });
                         }}
                       >

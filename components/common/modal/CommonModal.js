@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { useCookies } from "react-cookie";
 
-import Warning from "../../public/warning.svg";
+import Warning from "../../../public/warning.svg";
 import tw from "tailwind-styled-components";
 import axios from "axios";
 
@@ -61,25 +61,43 @@ function CommonModal(props) {
   const [cookies, setCookie, removeCookie] = useCookies(["token"]);
   let { commonModalData, setCommonModalData } = props;
 
+  const [userData, setUrlData] = useState({
+    user_id: cookies.token.id,
+    email: cookies.token.email,
+  });
+
   const router = useRouter();
 
   //
   let id = commonModalData.id;
 
-  console.log("커먼 모달", id);
 
   let checkModalState = () => {
-    console.log("커먼 모달 데이터", commonModalData);
+    // console.log("커먼 모달 데이터", commonModalData);
+
     if (commonModalData.text === "로그아웃") {
       removeCookie("token", { path: "/" });
       //그 후 home페이지로 이동
       router.push("/");
     }
     if (commonModalData.text === "삭제") {
-      console.log("삭제중");
+      // console.log("삭제중");
       deleteData().then((res) => {
-        console.log(res)
         router.reload();
+      });
+    }
+    if (commonModalData.text === "탈퇴") {
+      // console.log("탈퇴중");
+      deleteAccount().then((res) => {
+        if (res.data.status) {
+          alert(res.data.message);
+          removeCookie("token", { path: "/" });
+          router.push("/");
+        } else {
+          //에러 메시지를 보여주고
+          // console.log("에러", res);
+          alert(res.data.message);
+        }
       });
     }
 
@@ -92,6 +110,14 @@ function CommonModal(props) {
 
   let deleteData = () => {
     return axios.delete(`http://localhost:3000/api/feed/${id}`, {});
+  };
+
+  let deleteAccount = () => {
+    return axios.delete("http://localhost:3000/api/auth/delete", {
+      data: {
+        userData,
+      },
+    });
   };
 
   return (

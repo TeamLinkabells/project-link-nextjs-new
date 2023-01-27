@@ -19,7 +19,7 @@ const InputBox = tw.input`
 w-full bg-white rounded border focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-4 leading-8 transition-colors duration-200 ease-in-out h-[60px] bg-[#F1F1F5]
 `;
 
-export default function login() {
+export default function Login() {
   const [cookies, setCookie, removeCookie] = useCookies(["token"]);
   const router = useRouter();
 

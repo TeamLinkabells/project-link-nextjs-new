@@ -8,6 +8,7 @@ import Movement from "../../public/movement.svg";
 import Bookmark from "../../public/bookmark.svg";
 import BookmarkOn from "../../public/bookmark_on.svg";
 import UrlModal from "../common/modal/UrlModal";
+import DefaultImg from "../../public/defaultimg.svg";
 
 let FeedItem = (props) => {
   let {
@@ -102,7 +103,12 @@ let FeedItem = (props) => {
   return (
     <>
       <div className="h-[180px] overflow-hidden flex items-center justify-center border-b border-[#ddd] relative">
-        <img src={img} className="w-full" />
+        {img != "" ? (
+          <img src={img} className="w-full" />
+        ) : (
+          <DefaultImg className="w-full" />
+        )}
+        {/* // <img src={img} className="w-full" /> */}
         {pathname.includes("favorite") ? (
           <button
             onClick={unFavotieSubmitBtn}

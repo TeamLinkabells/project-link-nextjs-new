@@ -1,8 +1,20 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🔷 Link a bell
+나만의 링크 저장소, Link a bell<br/><br/>
 
-## Getting Started
 
-First, run the development server:
+## ◾ Project Overview
+<br/>
+
+*그때 그 링크 뭐였더라, 어디 저장해놨더라…….??* 
+
+<br/>
+Link a bell 프로젝트는 이 물음에서 시작되었습니다.
+<br/><br/>
+
+평소에 관심있어 하는 **링크**들을 **저장**해서<br/>
+한눈에 모아보고, 북마크하고, 폴더별로 저장 할 수 있는 **url 링크 저장소 서비스** 입니다.
+
+
 
 ```bash
 npm run dev

@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useRouter } from "next/router";
-import Link from "next/link";
+
 import axios from "axios";
 
 import Delete from "../../public/delete.svg";
@@ -8,7 +8,6 @@ import Movement from "../../public/movement.svg";
 import Bookmark from "../../public/bookmark.svg";
 import BookmarkOn from "../../public/bookmark_on.svg";
 import UrlModal from "../common/modal/UrlModal";
-import DefaultImg from "../../public/defaultimg.svg";
 
 let FeedItem = (props) => {
   let {
@@ -68,7 +67,7 @@ let FeedItem = (props) => {
   };
 
   let unFavotieSubmitBtn = () => {
-    alert("즐겨찾기를 해제하시겠습니까?");
+    // alert("즐겨찾기를 해제하시겠습니까?");
     unFavoriteData().then((res) => console.log(res));
     if (pathname.includes("favorite")) {
       router.reload();
@@ -106,7 +105,7 @@ let FeedItem = (props) => {
         {img != "" ? (
           <img src={img} className="w-full" />
         ) : (
-          <DefaultImg className="w-full" />
+          <img src="/img/thumbnail.jpg" className="w-full" />
         )}
         {/* // <img src={img} className="w-full" /> */}
         {pathname.includes("favorite") ? (
@@ -137,7 +136,7 @@ let FeedItem = (props) => {
       <div
         onClick={() => {
           setShowUrlModal(true);
-          console.log("바꿨습니다.");
+          // console.log("바꿨습니다.");
         }}
       >
         <div className="p-5 flex flex-col justify-between h-[156px]">

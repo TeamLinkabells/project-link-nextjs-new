@@ -7,6 +7,8 @@ export default async function handler(req, res) {
   if (req.method === "POST") {
     const { title, description, image, url, email } = req.body;
 
+    console.log("result", req.body);
+
     console.log("CONNECTING TO MONGO");
 
     await connectMongo();

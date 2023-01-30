@@ -110,7 +110,7 @@ function ShowModal(props) {
       createFolder().then((res) => {
         // console.log("folder response", res.data);
         if (res.data.status) {
-          alert(res.data.message);
+          // alert(res.data.message);
         } else {
           //에러 메시지를 보여주고
           // console.log("에러", res);
@@ -177,7 +177,7 @@ function ShowModal(props) {
                             .then((res) => {
                               // console.log(res);
                               if (res.data.status) {
-                                alert(res.data.message);
+                                // alert(res.data.message);
                                 setUrlShowModal({
                                   ...urlShowModal,
                                   state: "false",

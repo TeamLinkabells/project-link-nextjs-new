@@ -62,7 +62,7 @@ let FolderItem = (props) => {
               folderDelete().then((res) => {
                 // console.log("folder response", res.data);
                 if (res.data.status) {
-                  alert(res.data.message);
+                  // alert(res.data.message);
                 } else {
                   //에러 메시지를 보여주고
                   alert(res.data.message);

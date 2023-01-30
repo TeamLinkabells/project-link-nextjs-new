@@ -39,17 +39,27 @@ Javascript, react, next.js , tailwindCSS,  RestAPI, MongoDB , Link Preview API
 <br/>
 🔷 회원가입, 로그인, 로그아웃 , 회원탈퇴 페이지
 <br/>
+<img src="https://user-images.githubusercontent.com/105180536/215392781-ca3ed9ec-7a13-4cc6-9e98-9aabf76e814a.gif">
+<br/>
 <br/>
 🔷 URL 포스트 생성 및 삭제
 <br/>
 <br/>
 🔷 즐겨찾는 링크(북마크)
 <br/>
+<img src="https://user-images.githubusercontent.com/105180536/215395229-c73de817-43c0-4169-a24d-63676f243288.gif">
+<br/>
 <br/>
 🔷 URL 포스트 검색
 <br/>
+<img src="https://user-images.githubusercontent.com/105180536/215400710-73837e03-dcee-4727-9f45-d4d0e580b93a.gif">
+<br/>
 <br/>
 🔷 폴더 생성 및 삭제 
+<br/>
+<img src="https://user-images.githubusercontent.com/105180536/215397134-9cca5931-35c3-491d-9cb3-19307bc6c76c.gif">
+<br/>
+🔷 반응형 웹
 
 
 

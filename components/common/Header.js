@@ -37,7 +37,7 @@ let Header = (props) => {
 
   return (
     <>
-      <div className="flex border-b border-[#ededed] pb-6">
+      <div className="flex flex-col sm:flex-row border-b border-[#ededed] pb-6">
         <h3 className="text-[22px] font-medium text-black">
           {pathname.includes("favorite")
             ? "즐겨찾는 링크"
@@ -47,7 +47,7 @@ let Header = (props) => {
             ? title
             : "전체 링크"}
         </h3>
-        <div className="ml-auto relative h-10">
+        <div className="mt-5 sm:mt-0 sm:ml-auto relative h-10 w-fit">
           <SearchInput
             onChange={(e) => {
               {

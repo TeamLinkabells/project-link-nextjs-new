@@ -10,10 +10,10 @@ const Highlight = tw.span`
   font-bold relative before:content-[''] before:w-full before:h-[10px] before:bg-[#69E5AA] before:absolute before:bottom-0 before:left-0 before:block before:-z-10
 `
 const UsageBox = tw.div`
-  w-full md:w-[calc(50%-20px)] h-[520px] sm:h-[580px] md:h-[500px] lg:h-[560px] bg-white rounded-xl shadow-lg overflow-hidden
+  w-full md:w-[calc(50%-20px)] h-[440px] sm:h-[580px] md:h-[500px] lg:h-[560px] bg-white rounded-xl shadow-lg overflow-hidden
 `
 const UsageText = tw.h3`
-  text-3xl leading-normal p-10 relative z-0
+  text-2xl lg:text-3xl leading-normal p-10 relative z-0
 `
 
 const Home = () => {
@@ -59,17 +59,17 @@ const Home = () => {
         </div>
       </section>
       <section>
-        <div className="py-[150px] max-w-[1200px] m-auto">
-          <div>
+        <div className="max-w-[1200px] w-[90%] py-20 lg:py-[150px] m-auto">
+          {/* <div>
             <video src="/videos/test.mp4" loop autoPlay muted className="w-[800px] h-[500px] "/>
-          </div>
-          <div className="flex justify-between items-center mt-[100px]">
-            <video src="/videos/test.mp4" loop autoPlay muted className="w-[800px] h-[500px] "/>
-            <div className="bg-[#ccc] w-[240px] h-[420px] rounded-2xl"></div>
+          </div> */}
+          <div className="flex justify-center sm:justify-between items-center relative">
+            <video src="/videos/test.mp4" loop autoPlay muted className="w-[80%] hidden sm:flex"/>
+            <video src="/videos/mobile_test.mp4" loop autoPlay muted className="flex w-[300px] justify-center sm:w-[20%]"/>
           </div>
         </div>
         <div className="bg-[#f7f7f7] w-full">
-          <div className="max-w-[1200px] w-[90%] m-auto py-[150px] flex flex-wrap gap-10">
+          <div className="max-w-[1200px] w-[90%] m-auto py-20 lg:py-[150px] flex flex-wrap gap-10">
             <UsageBox>
               <UsageText>즐겨 찾는 링크는 <Highlight>북마크</Highlight>로<br />따로 보관하고 관리해 보세요.</UsageText>
               <div className="w-full">
@@ -90,7 +90,9 @@ const Home = () => {
             </UsageBox>
             <UsageBox>
               <UsageText>원하시는 링크를 클릭하여<br /><Highlight>복사 또는 이동</Highlight>해 보세요.</UsageText>
-              <div className="w-full"></div>
+              <div className="w-full">
+                <video src="/videos/copy.mp4" loop autoPlay muted/>
+              </div>
             </UsageBox>
           </div>
         </div>

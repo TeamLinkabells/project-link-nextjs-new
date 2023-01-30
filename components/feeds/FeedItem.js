@@ -164,17 +164,17 @@ let FeedItem = (props) => {
       <div className="flex items-center justify-between px-5 pb-5">
         <button
           onClick={() => {
-            deleteBtn();
-          }}
-        >
-          <Delete className="hover:fill-[#59A5FF]" />
-        </button>
-        <button
-          onClick={() => {
             movementBtn();
           }}
         >
           <Movement />
+        </button>
+        <button
+          onClick={() => {
+            deleteBtn();
+          }}
+        >
+          <Delete className="hover:fill-[#59A5FF]" />
         </button>
       </div>
     </>

@@ -4,6 +4,18 @@ import { useEffect } from "react";
 import { useCookies } from "react-cookie";
 import { useRouter } from "next/router";
 
+import tw from "tailwind-styled-components";
+
+const Highlight = tw.span`
+  font-bold relative before:content-[''] before:w-full before:h-[10px] before:bg-[#69E5AA] before:absolute before:bottom-0 before:left-0 before:block before:-z-10
+`
+const UsageBox = tw.div`
+  w-full md:w-[calc(50%-20px)] h-[520px] sm:h-[580px] md:h-[500px] lg:h-[560px] bg-white rounded-xl shadow-lg overflow-hidden
+`
+const UsageText = tw.h3`
+  text-3xl leading-normal p-10 relative z-0
+`
+
 const Home = () => {
   const [cookies, setCookie, removeCookie] = useCookies(["token"]);
 
@@ -22,28 +34,64 @@ const Home = () => {
   //로그인이 되어있지 않을 때
   return (
     <>
-      <section>
-        <div className="mx-auto flex px-5 py-24 items-center justify-center flex-col bg-[#0074FF] h-screen">
+      <section className="bg-[#0074FF] h-screen mx-auto flex items-center justify-center">
+        <div className="max-w-[1200px] w-[90%] flex px-5 py-24 items-center justify-center flex-col">
           <div className="mb-10">
-            <Logo />
+            <Logo className="w-[300px] sm:w-[400px] md:w-[500px]"/>
           </div>
-
-          <p className="mb-12 leading-relaxed text-white text-2xl">
+          <p className="mb-12 leading-relaxed text-white text-xl sm:text-2xl">
             나만의 링크 저장소, 링커벨
           </p>
           <div className="flex justify-center">
             <button
               className="flex text-[#0074FF] bg-white border-0 focus:outline-none rounded text-lg h-[80px]
-             w-[360px] items-center justify-center drop-shadow-2xl"
+             w-[300px] sm:w-[360px] items-center justify-center drop-shadow-2xl"
               // onClick={() => router.push("/login")}
             >
               <Link
                 href="/login"
-                className="py-2 px-6 flex items-center justify-center w-full h-full text-xl font-medium"
+                className="py-2 px-6 flex items-center justify-center w-full h-full text-lg sm:text-xl font-medium"
               >
                 로그인 페이지로 이동하기
               </Link>
             </button>
+          </div>
+        </div>
+      </section>
+      <section>
+        <div className="py-[150px] max-w-[1200px] m-auto">
+          <div>
+            <video src="/videos/test.mp4" loop autoPlay muted className="w-[800px] h-[500px] "/>
+          </div>
+          <div className="flex justify-between items-center mt-[100px]">
+            <video src="/videos/test.mp4" loop autoPlay muted className="w-[800px] h-[500px] "/>
+            <div className="bg-[#ccc] w-[240px] h-[420px] rounded-2xl"></div>
+          </div>
+        </div>
+        <div className="bg-[#f7f7f7] w-full">
+          <div className="max-w-[1200px] w-[90%] m-auto py-[150px] flex flex-wrap gap-10">
+            <UsageBox>
+              <UsageText>즐겨 찾는 링크는 <Highlight>북마크</Highlight>로<br />따로 보관하고 관리해 보세요.</UsageText>
+              <div className="w-full">
+                <video src="/videos/fav.mp4" loop autoPlay muted/>
+              </div>
+            </UsageBox>
+            <UsageBox>
+              <UsageText>나만의 폴더를 생성하여<br />링크를 <Highlight>폴더별로 저장</Highlight>하세요.</UsageText>
+              <div className="w-full">
+                <video src="/videos/folder.mp4" loop autoPlay muted/>
+              </div>
+            </UsageBox>
+            <UsageBox>
+              <UsageText>링크의 제목 또는 내용을<br /><Highlight>검색창</Highlight>에 입력해 찾아보세요.</UsageText>
+              <div className="w-full">
+                <video src="/videos/search.mp4" loop autoPlay muted/>
+              </div>
+            </UsageBox>
+            <UsageBox>
+              <UsageText>원하시는 링크를 클릭하여<br /><Highlight>복사 또는 이동</Highlight>해 보세요.</UsageText>
+              <div className="w-full"></div>
+            </UsageBox>
           </div>
         </div>
       </section>

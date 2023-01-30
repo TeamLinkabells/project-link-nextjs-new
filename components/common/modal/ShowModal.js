@@ -161,7 +161,7 @@ function ShowModal(props) {
                       <p className="w-full break-all">{linkInfo.description}</p>
                     </div>
                     <div className="flex justify-end gap-5 mt-5">
-                      <ModalSubmitBtn
+                      {/* <ModalSubmitBtn
                         type="button"
                         className="bg-white border-[#ddd] text-[#999] rounded-l-unset"
                         onClick={() => {
@@ -169,7 +169,7 @@ function ShowModal(props) {
                         }}
                       >
                         이전
-                      </ModalSubmitBtn>
+                      </ModalSubmitBtn> */}
                       <ModalSubmitBtn
                         type="button"
                         onClick={() => {

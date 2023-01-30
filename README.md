@@ -1,7 +1,7 @@
 # 🔷 Link a bell
 나만의 링크 저장소, Link a bell<br/><br/>
 
-<img src="https://user-images.githubusercontent.com/105180536/215324468-340181f0-5bd8-4188-9b70-9a585852d8b9.gif">
+<img src="https://user-images.githubusercontent.com/105180536/215403681-3d9920e7-6e79-4cf0-8831-890b6a38896b.gif">
 
 
 ## ◾ Project Overview

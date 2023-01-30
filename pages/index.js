@@ -13,7 +13,7 @@ const UsageBox = tw.div`
   w-full md:w-[calc(50%-20px)] h-[440px] sm:h-[580px] md:h-[500px] lg:h-[560px] bg-white rounded-xl shadow-lg overflow-hidden
 `
 const UsageText = tw.h3`
-  text-2xl lg:text-3xl leading-normal p-10 relative z-0
+  text-2xl lg:text-3xl lg:leading-normal p-10 relative z-0
 `
 
 const Home = () => {
@@ -44,7 +44,7 @@ const Home = () => {
           </p>
           <div className="flex justify-center">
             <button
-              className="flex text-[#0074FF] bg-white border-0 focus:outline-none rounded text-lg h-[80px]
+              className="flex text-[#0074FF] bg-white border-0 focus:outline-none rounded text-lg h-[70px] sm:h-[80px]
              w-[300px] sm:w-[360px] items-center justify-center drop-shadow-2xl"
               // onClick={() => router.push("/login")}
             >
@@ -63,9 +63,9 @@ const Home = () => {
           {/* <div>
             <video src="/videos/test.mp4" loop autoPlay muted className="w-[800px] h-[500px] "/>
           </div> */}
-          <div className="flex justify-center sm:justify-between items-center relative">
-            <video src="/videos/test.mp4" loop autoPlay muted className="w-[80%] hidden sm:flex"/>
-            <video src="/videos/mobile_test.mp4" loop autoPlay muted className="flex w-[300px] justify-center sm:w-[20%]"/>
+          <div className="flex justify-center sm:justify-between items-center relative gap-0 sm:gap-10">
+            <video src="/videos/test.mp4" loop autoPlay muted className="w-[calc(80%-20px)] hidden sm:flex"/>
+            <video src="/videos/mobile_test.mp4" loop autoPlay muted className="flex w-[300px] justify-center sm:w-[calc(20%-20px)]"/>
           </div>
         </div>
         <div className="bg-[#f7f7f7] w-full">

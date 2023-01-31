@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Logo from "../public/logo.svg";
+import ScrollArrow from "../public/scroll_arrow.svg"
 import { useEffect } from "react";
 import { useCookies } from "react-cookie";
 import { useRouter } from "next/router";
@@ -56,6 +57,9 @@ const Home = () => {
               </Link>
             </button>
           </div>
+          <div className="absolute bottom-10 animate-bounce w-4 h-4 sm:w-6 sm:h-6">
+            <ScrollArrow />
+          </div>
         </div>
       </section>
       <section>
@@ -64,8 +68,8 @@ const Home = () => {
             <video src="/videos/test.mp4" loop autoPlay muted className="w-[800px] h-[500px] "/>
           </div> */}
           <div className="flex justify-center sm:justify-between items-center relative gap-0 sm:gap-10">
-            <video src="/videos/test.mp4" loop autoPlay muted className="w-[calc(80%-20px)] hidden sm:flex"/>
-            <video src="/videos/mobile_test.mp4" loop autoPlay muted className="flex w-[300px] justify-center sm:w-[calc(20%-20px)]"/>
+            <video src="/videos/main_pc_test.mp4" playsinline loop autoPlay muted className="w-[calc(80%-20px)] hidden sm:flex rounded-xl border border-[#ddd]"/>
+            <video src="/videos/mobile_test.mp4" playsinline loop autoPlay muted className="flex w-[300px] justify-center sm:w-[calc(20%-20px)]"/>
           </div>
         </div>
         <div className="bg-[#f7f7f7] w-full">
@@ -73,25 +77,25 @@ const Home = () => {
             <UsageBox>
               <UsageText>즐겨 찾는 링크는 <Highlight>북마크</Highlight>로<br />따로 보관하고 관리해 보세요.</UsageText>
               <div className="w-full">
-                <video src="/videos/fav.mp4" loop autoPlay muted/>
+                <video src="/videos/fav.mp4" playsinline loop autoPlay muted/>
               </div>
             </UsageBox>
             <UsageBox>
               <UsageText>나만의 폴더를 생성하여<br />링크를 <Highlight>폴더별로 저장</Highlight>하세요.</UsageText>
               <div className="w-full">
-                <video src="/videos/folder.mp4" loop autoPlay muted/>
+                <video src="/videos/folder.mp4" playsinline loop autoPlay muted/>
               </div>
             </UsageBox>
             <UsageBox>
               <UsageText>링크의 제목 또는 내용을<br /><Highlight>검색창</Highlight>에 입력해 찾아보세요.</UsageText>
               <div className="w-full">
-                <video src="/videos/search.mp4" loop autoPlay muted/>
+                <video src="/videos/search.mp4" playsinline loop autoPlay muted/>
               </div>
             </UsageBox>
             <UsageBox>
               <UsageText>원하시는 링크를 클릭하여<br /><Highlight>복사 또는 이동</Highlight>해 보세요.</UsageText>
               <div className="w-full">
-                <video src="/videos/copy.mp4" loop autoPlay muted/>
+                <video src="/videos/copy.mp4" playsinline loop autoPlay muted/>
               </div>
             </UsageBox>
           </div>

@@ -1,7 +1,7 @@
 import connectMongo from "../../../utils/connectMongo";
 import User from "../../../models/schemas/user";
 import Post from "../../../models/schemas/post";
-import Folder from "../../../models/schemas/Folder";
+import Folder from "../../../models/schemas/folder";
 
 import crypto from "crypto";
 import { resolve } from "path";

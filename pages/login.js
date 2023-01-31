@@ -16,7 +16,7 @@ relative mb-5
 `;
 
 const InputBox = tw.input`
-w-full bg-white rounded border focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-4 leading-8 transition-colors duration-200 ease-in-out h-[60px] bg-[#F1F1F5]
+max-w-[400px] w-full bg-white rounded border focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-4 leading-8 transition-colors duration-200 ease-in-out h-[60px] bg-[#F1F1F5]
 `;
 
 export default function Login() {
@@ -66,15 +66,15 @@ export default function Login() {
 
   return (
     <>
-      <section className="text-gray-600 body-font">
-        <div className="container mx-auto flex px-5 py-24 items-center justify-center flex-col">
-          <div className="lg:w-2/6 md:w-1/2 y-100 rounded-lg p-8 flex flex-col w-full mt-10 md:mt-0">
+      <section className="text-gray-600 body-font h-screen">
+        <div className="mx-auto flex px-5 items-center justify-center flex-col h-screen">
+          <div className="y-100 rounded-lg p-8 flex flex-col w-full mt-10 md:mt-0 items-center">
             <Logodiv>
               <Link href="/">
-                <ColorLogo width="300" height="54" viewBox="0 0 300 60" />
+                <ColorLogo className="max-w-[300px] w-[90%] m-auto h-[54px] sm:w-[300px]" />
               </Link>
             </Logodiv>
-            <form>
+            <form className="max-w-[400px] w-full">
               <InputDiv>
                 <InputBox
                   type="email"
@@ -102,7 +102,7 @@ export default function Login() {
               </div>
               <button
                 type="button"
-                className="text-white bg-[#0074FF] border-0 py-2 px-8 rounded text-lg h-[60px] w-full mt-5"
+                className="text-white bg-[#0074FF] border-0 py-2 px-8 rounded text-lg h-[60px] max-w-[400px] w-full mt-5"
                 onClick={() => {
                   clickLoginBtn()
                     .then((res) => {
@@ -124,7 +124,7 @@ export default function Login() {
                 로그인
               </button>
             </form>
-            <button className="text-white bg-[#BBBBBB] border-0 py-2 px-6 focus:outline-none rounded text-lg mt-5 h-[60px] tracking-tight">
+            <button className="max-w-[400px] w-full text-white bg-[#BBBBBB] border-0 py-2 px-6 focus:outline-none rounded text-lg mt-5 h-[60px] tracking-tight">
               카카오톡 간편 로그인
             </button>
             <p className="text-gray-500 mt-10 tracking-tight m-auto">

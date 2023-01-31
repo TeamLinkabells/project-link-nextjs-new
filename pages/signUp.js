@@ -11,11 +11,11 @@ m-auto mb-[50px]
 `;
 
 const InputDiv = tw.div`
-relative mb-5
+relative mb-5 flex flex-col
 `;
 
 const InputBox = tw.input`
-w-full bg-white rounded border focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-4 leading-8 transition-colors duration-200 ease-in-out h-[60px] bg-[#F1F1F5]
+max-w-[400px] w-full bg-white rounded border focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-4 leading-8 transition-colors duration-200 ease-in-out h-[60px] bg-[#F1F1F5]
 `;
 
 export default function SignUp() {
@@ -93,15 +93,15 @@ export default function SignUp() {
 
   return (
     <>
-      <section className="text-gray-600 body-font">
-        <div className="container mx-auto flex px-5 py-24 items-center justify-center flex-col">
-          <div className="lg:w-2/6 md:w-1/2 y-100 rounded-lg p-8 flex flex-col w-full mt-10 md:mt-0">
+      <section className="h-screen text-gray-600 body-font">
+        <div className="h-screen mx-auto flex items-center justify-center flex-col">
+          <div className="items-center y-100 rounded-lg p-8 flex flex-col w-full mt-10 md:mt-0">
             <Logodiv>
               <Link href="/">
-                <ColorLogo width="300" height="54" viewBox="0 0 300 60" />
+                <ColorLogo className="max-w-[300px] w-[90%] m-auto h-[54px] sm:w-[300px]" />
               </Link>
             </Logodiv>
-            <form>
+            <form className="max-w-[400px] w-full">
               <InputDiv>
                 <label
                   htmlFor="email"

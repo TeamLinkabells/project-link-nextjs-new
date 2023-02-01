@@ -61,6 +61,8 @@ Javascript, react, next.js , tailwindCSS,  RestAPI, MongoDB , Link Preview API
 <img src="https://user-images.githubusercontent.com/105180536/215397134-9cca5931-35c3-491d-9cb3-19307bc6c76c.gif">
 <br/>
 🔷 반응형 웹
+<br/>
+<img src="https://user-images.githubusercontent.com/105180536/215956741-b6f16702-7406-4ecf-91d5-35fd1bfbc74b.gif">
 
 
 

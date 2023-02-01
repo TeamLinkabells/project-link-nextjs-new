@@ -36,6 +36,7 @@ Javascript, react, next.js , tailwindCSS,  RestAPI, MongoDB , Link Preview API
 
 🔷 첫 랜딩 페이지
 <br/>
+<img src="https://user-images.githubusercontent.com/105180536/215963091-3a97de9b-5ae2-456a-9f39-94806323d2b8.gif">
 <br/>
 🔷 회원가입, 로그인, 로그아웃 , 회원탈퇴 페이지
 <br/>

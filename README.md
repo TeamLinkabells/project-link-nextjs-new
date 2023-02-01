@@ -44,6 +44,7 @@ Javascript, react, next.js , tailwindCSS,  RestAPI, MongoDB , Link Preview API
 <br/>
 🔷 URL 포스트 생성 및 삭제
 <br/>
+<img src="https://user-images.githubusercontent.com/105180536/215951897-749ff096-9ac3-436b-a690-c9186cf7d5ba.gif">
 <br/>
 🔷 즐겨찾는 링크(북마크)
 <br/>
@@ -60,7 +61,14 @@ Javascript, react, next.js , tailwindCSS,  RestAPI, MongoDB , Link Preview API
 <img src="https://user-images.githubusercontent.com/105180536/215397134-9cca5931-35c3-491d-9cb3-19307bc6c76c.gif">
 <br/>
 🔷 반응형 웹
+<br/>
+<img src="https://user-images.githubusercontent.com/105180536/215956741-b6f16702-7406-4ecf-91d5-35fd1bfbc74b.gif">
 
+
+## ◾ Project Overview
+현재 배포페이지의 오류로 인해 localhost에서 확인해보실 수 있습니다. :-)
+
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 
 ```bash

@@ -65,6 +65,11 @@ Javascript, react, next.js , tailwindCSS,  RestAPI, MongoDB , Link Preview API
 <img src="https://user-images.githubusercontent.com/105180536/215956741-b6f16702-7406-4ecf-91d5-35fd1bfbc74b.gif">
 
 
+## ◾ Project Overview
+현재 배포페이지의 오류로 인해 localhost에서 확인해보실 수 있습니다. :-)
+
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
 
 ```bash
 npm run dev

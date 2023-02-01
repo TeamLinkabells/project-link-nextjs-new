@@ -68,8 +68,8 @@ const Home = () => {
             <video src="/videos/test.mp4" loop autoPlay muted className="w-[800px] h-[500px] "/>
           </div> */}
           <div className="flex justify-center sm:justify-between items-end relative gap-0 sm:gap-10">
-            <video src="/videos/main_pc_test.mp4" loop autoPlay muted playsInline className="w-[calc(80%-20px)] hidden sm:flex rounded-xl border border-[#ddd]"/>
-            <video src="/videos/main_mob.mp4" loop autoPlay muted playsInline className="flex max-w-[240px] w-full justify-center sm:w-[calc(20%-20px)]"/>
+            <video src="/videos/main_pc.mp4" loop autoPlay muted playsInline className="w-[calc(82%-20px)] hidden sm:flex rounded-xl border border-[#ddd]"/>
+            <video src="/videos/main_mob.mp4" loop autoPlay muted playsInline className="flex max-w-[240px] w-full justify-center sm:w-[calc(18%-20px)]"/>
           </div>
         </div>
         <div className="bg-[#f7f7f7] w-full">

@@ -44,6 +44,7 @@ Javascript, react, next.js , tailwindCSS,  RestAPI, MongoDB , Link Preview API
 <br/>
 🔷 URL 포스트 생성 및 삭제
 <br/>
+<img src="https://user-images.githubusercontent.com/105180536/215951897-749ff096-9ac3-436b-a690-c9186cf7d5ba.gif">
 <br/>
 🔷 즐겨찾는 링크(북마크)
 <br/>
